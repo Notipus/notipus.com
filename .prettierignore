@@ -1,0 +1,16 @@
+# Build output
+public/
+resources/
+
+# Dependencies
+node_modules/
+
+# Lockfiles
+bun.lock
+package-lock.json
+
+# Hugo generated
+.hugo_build.lock
+
+# Hugo templates (Go template syntax not compatible with Prettier)
+layouts/

@@ -1,0 +1,17 @@
+{
+  "name": "Notipus - Payment Notifications That Spark Joy",
+  "short_name": "Notipus",
+  "description": "Beautifully enriched Slack notifications for Stripe, Shopify, and Maxio.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#f5710f",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

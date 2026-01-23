@@ -1,0 +1,36 @@
+{{- /* Head section - aggregates all head elements */ -}}
+
+{{- /* SEO Meta Tags */ -}}
+{{- partial "seo/meta.html" . -}}
+
+{{- /* Open Graph Tags */ -}}
+{{- partial "seo/opengraph.html" . -}}
+
+{{- /* Twitter Card Tags */ -}}
+{{- partial "seo/twitter.html" . -}}
+
+{{- /* Favicon */ -}}
+<link rel="icon" type="image/png" href="{{ "/images/logo.png" | relURL }}">
+<link rel="apple-touch-icon" href="{{ "/images/logo.png" | relURL }}">
+<link rel="manifest" href="{{ "/site.webmanifest" | relURL }}">
+
+{{- /* Tabler Icons (local) */ -}}
+<link rel="stylesheet" href="{{ "/vendor/tabler-icons/tabler-icons.min.css" | relURL }}">
+
+{{- /* Tailwind CSS - processed by Hugo Pipes */ -}}
+{{- $css := resources.Get "css/main.css" -}}
+{{- if $css -}}
+  {{- $css = $css | postCSS -}}
+  {{- if hugo.IsProduction -}}
+    {{- $css = $css | minify | fingerprint "sha256" -}}
+  {{- end -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $css.Data.Integrity }}"{{ end }}>
+{{- end -}}
+
+{{- /* SEO Links */ -}}
+<link rel="sitemap" type="application/xml" href="{{ "/sitemap.xml" | absURL }}">
+<link rel="author" type="text/plain" href="{{ "/humans.txt" | absURL }}">
+<link rel="alternate" type="text/plain" title="LLM Information" href="{{ "/llms.txt" | absURL }}">
+
+{{- /* Google Analytics */ -}}
+{{- partial "analytics.html" . -}}

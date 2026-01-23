@@ -1,0 +1,41 @@
+{{- /* Twitter Card Meta Tags */ -}}
+
+{{- /* Card type */ -}}
+<meta name="twitter:card" content="{{ .Site.Params.social.twitterCard | default "summary_large_image" }}">
+
+{{- /* Site account */ -}}
+{{- with .Site.Params.social.twitterSite -}}
+<meta name="twitter:site" content="{{ . }}">
+{{- end -}}
+
+{{- /* Creator account */ -}}
+{{- with .Site.Params.social.twitterCreator -}}
+<meta name="twitter:creator" content="{{ . }}">
+{{- end -}}
+
+{{- /* Title */ -}}
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+
+{{- /* Description */ -}}
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .Summary -}}
+  {{- $description = .Summary | plainify | truncate 200 -}}
+{{- else -}}
+  {{- $description = .Site.Params.description -}}
+{{- end -}}
+<meta name="twitter:description" content="{{ $description }}">
+
+{{- /* Image */ -}}
+{{- $twitterImage := "" -}}
+{{- if .Params.image -}}
+  {{- $twitterImage = .Params.image | absURL -}}
+{{- else if .Site.Params.social.ogImage -}}
+  {{- $twitterImage = .Site.Params.social.ogImage | absURL -}}
+{{- end -}}
+
+{{- if $twitterImage -}}
+<meta name="twitter:image" content="{{ $twitterImage }}">
+<meta name="twitter:image:alt" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+{{- end -}}

@@ -1,0 +1,110 @@
+# Notipus - Hugo Configuration
+# https://notipus.com
+
+baseURL = "https://notipus.com/"
+languageCode = "en-US"
+title = "Notipus - Payment Notifications That Spark Joy"
+
+# SEO-friendly URL settings
+canonifyURLs = true
+relativeURLs = false
+removePathAccents = true
+disablePathToLower = false
+
+# Build settings
+enableRobotsTXT = true
+enableGitInfo = false
+enableEmoji = false
+
+# Sitemap settings
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# Disable taxonomies (not needed for this site)
+[taxonomies]
+
+disableKinds = ["taxonomy", "term"]
+
+# Permalink structure
+[permalinks]
+  [permalinks.page]
+    posts = "/:slug/"
+  [permalinks.section]
+    posts = "/:section/"
+
+# Minification for production
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableSVG = false
+
+# Markup settings
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+  [markup.highlight]
+    noClasses = false
+
+# Site parameters
+[params]
+  # Site metadata
+  description = "Beautifully enriched Slack notifications for Stripe, Shopify, and Maxio. Get customer context, smart insights, and actionable intelligence with every payment alert."
+  keywords = "stripe slack notifications, payment alerts, subscription notifications, stripe webhooks slack, shopify notifications, maxio alerts, chargify alerts, customer intelligence, failed payment alerts, subscription management"
+  author = "Viktopia Studio"
+  
+  # Locale
+  locale = "en_US"
+  language = "en-US"
+  
+  # Google Analytics
+  [params.analytics]
+    gaId = "G-ZC525GL8D9"
+  
+  # Open Graph / Social
+  [params.social]
+    ogImage = "/images/og-image.png"
+    ogImageWidth = "1200"
+    ogImageHeight = "630"
+    twitterCard = "summary_large_image"
+  
+  # Schema.org settings
+  [params.schema]
+    organizationName = "Notipus"
+    organizationType = "SoftwareApplication"
+    applicationCategory = "BusinessApplication"
+
+# Security settings
+[security]
+  [security.funcs]
+    getenv = ["^HUGO_", "^CI$"]
+
+# Module mounts
+[module]
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "node_modules/@tabler/icons-webfont/dist"
+    target = "static/vendor/tabler-icons"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+
+# Server configuration for development
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      X-Frame-Options = "DENY"
+      X-Content-Type-Options = "nosniff"
+      Referrer-Policy = "strict-origin-when-cross-origin"

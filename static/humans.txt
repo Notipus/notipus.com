@@ -1,0 +1,15 @@
+/* TEAM */
+Project: Notipus
+Studio: Viktopia Studio
+Site: https://notipus.com
+GitHub: https://github.com/Viktopia/notipus
+
+/* SITE */
+Standards: HTML5, CSS3, Tailwind CSS
+Components: Hugo, PostCSS
+Software: Cursor
+
+/* THANKS */
+Hugo: https://gohugo.io
+Tailwind CSS: https://tailwindcss.com
+Office Space: For the inspiration

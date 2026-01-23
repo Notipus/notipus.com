@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-US" }}">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+  {{- partial "header.html" . -}}
+  
+  <main class="flex-1">
+    {{- block "main" . }}{{- end }}
+  </main>
+  
+  {{- partial "footer.html" . -}}
+  
+  {{- /* Schema.org structured data */ -}}
+  {{- partial "schema/organization.html" . -}}
+  {{- partial "schema/website.html" . -}}
+  {{- if .IsHome -}}
+    {{- partial "schema/software.html" . -}}
+  {{- end -}}
+</body>
+</html>

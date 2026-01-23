@@ -1,0 +1,18 @@
+{{- /* Site header with navigation */ -}}
+<nav class="bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <a href="{{ "/" | relURL }}" class="flex items-center">
+          <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus Logo" class="h-6 w-auto">
+          <span class="ml-2 text-xl sm:text-2xl font-bold text-primary-600">Notipus</span>
+        </a>
+      </div>
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <a href="{{ "/" | relURL }}" class="nav-link hidden sm:inline-block">Home</a>
+        <a href="{{ "/pricing/" | relURL }}" class="nav-link hidden md:inline-block">Pricing</a>
+        <a href="https://app.notipus.com" class="nav-link get-started-btn text-sm sm:text-base px-3 sm:px-4 py-1.5 sm:py-2">Get Started</a>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,233 @@
+{{ define "main" }}
+<!-- Hero Section -->
+<div class="relative bg-gradient-to-b from-primary-50 to-white overflow-hidden">
+  <div class="max-w-7xl mx-auto pt-12 pb-16 sm:pt-16 sm:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
+        <span class="block text-[#f5710f]">Payment Notifications</span>
+        <span class="block text-[#f5710f]">That Spark Joy</span>
+      </h1>
+      <p class="mt-3 max-w-md mx-auto text-sm text-gray-600 sm:text-base md:mt-5 md:text-lg lg:text-xl md:max-w-3xl">
+        Beautifully enriched Slack notifications for Stripe, Shopify, and Maxio. Customer context, smart insights, and actionable intelligence with every payment alert.
+      </p>
+      <div class="mt-8 sm:mt-12 max-w-md mx-auto">
+        <a href="https://app.notipus.com" class="get-started-btn inline-block bg-[#f5710f] text-white text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-12 py-3 sm:py-4 hover:bg-[#ea580c] transition-colors rounded-lg">
+          <i class="ti ti-rocket mr-2"></i>Get Started
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slack Preview Section -->
+<div class="py-12 sm:py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-6 sm:mb-8">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900">See it in action</h2>
+      <p class="mt-2 text-sm sm:text-base text-gray-600">Rich, contextual notifications directly in Slack</p>
+    </div>
+
+    <!-- Notification Examples Grid -->
+    <div class="space-y-4 sm:space-y-6">
+      
+      <!-- Success: Bill Lumbergh -->
+      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="p-3 sm:p-4">
+          <div class="flex items-start space-x-2 sm:space-x-3">
+            <div class="flex-shrink-0">
+              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                <span class="text-xs text-gray-500">9:41 AM</span>
+              </div>
+              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">💸 Ka-ching! Initech keeps the lights on with a sweet $2,499 payment!</p>
+              <p class="text-gray-800 mb-2 text-sm sm:text-base">
+                Bill Lumbergh (<span class="text-[#1264a3] break-all sm:break-normal">blumbergh@initech.com</span>) just paid for their <strong>Enterprise</strong> plan. Yeahhh, that'd be great.
+              </p>
+              <div class="bg-gray-50 p-2 sm:p-3 rounded border-l-4 border-green-500 mb-2">
+                <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">Initech</p>
+                <p class="text-gray-700 text-xs sm:text-sm">
+                  A software development and IT services company based in Austin, Texas. Since 1988, helping businesses streamline operations with innovative technology solutions.
+                </p>
+              </div>
+              <p class="text-xs text-gray-500">Sent by Stripe from Initech</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Failed Payment: Milton -->
+      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="p-3 sm:p-4">
+          <div class="flex items-start space-x-2 sm:space-x-3">
+            <div class="flex-shrink-0">
+              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                <span class="text-xs text-gray-500">9:42 AM</span>
+              </div>
+              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">👋 Friendly nudge! Initech's payment could use a quick check.</p>
+              <p class="text-gray-800 mb-2 text-sm sm:text-base">
+                Milton Waddams' (<span class="text-[#1264a3] break-all sm:break-normal">mwaddams@initech.com</span>) card was declined. He was told there would be cake... and a working card.
+              </p>
+              <div class="bg-gray-50 p-2 sm:p-3 rounded border-l-4 border-red-500 mb-2">
+                <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">🔥 Churn Risk: High</p>
+                <p class="text-gray-700 text-xs sm:text-sm">
+                  LTV: $2,400 • Account age: 3 years • 2nd failed payment this month
+                </p>
+              </div>
+              <p class="text-xs text-gray-500">Sent by Stripe from Initech</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trial Expiring: Peter -->
+      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="p-3 sm:p-4">
+          <div class="flex items-start space-x-2 sm:space-x-3">
+            <div class="flex-shrink-0">
+              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                <span class="text-xs text-gray-500">9:43 AM</span>
+              </div>
+              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">⏳ Trial countdown for Initech! They've been loving API and Dashboard - time to chat!</p>
+              <p class="text-gray-800 mb-2 text-sm sm:text-base">
+                Peter Gibbons' (<span class="text-[#1264a3] break-all sm:break-normal">pgibbons@initech.com</span>) trial expires in 3 days. He might just stop coming in.
+              </p>
+              <div class="bg-gray-50 p-2 sm:p-3 rounded border-l-4 border-yellow-500 mb-2">
+                <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">📊 Engagement: Medium</p>
+                <p class="text-gray-700 text-xs sm:text-sm">
+                  12 logins during trial • Last active: yesterday • Viewed pricing page 3x
+                </p>
+              </div>
+              <p class="text-xs text-gray-500">Sent by Stripe from Initech</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade: Michael Bolton -->
+      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="p-3 sm:p-4">
+          <div class="flex items-start space-x-2 sm:space-x-3">
+            <div class="flex-shrink-0">
+              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                <span class="text-xs text-gray-500">9:44 AM</span>
+              </div>
+              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">🎉 🚀 Awesome upgrade! Initech is growing fast, leveling up from Basic to Pro! Next level achieved! 💪</p>
+              <p class="text-gray-800 mb-2 text-sm sm:text-base">
+                Michael Bolton (<span class="text-[#1264a3] break-all sm:break-normal">mbolton@initech.com</span>) just made the call. No relation to the singer.
+              </p>
+              <div class="bg-gray-50 p-2 sm:p-3 rounded border-l-4 border-purple-500 mb-2">
+                <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">💵 Revenue Impact: +$50/mo</p>
+                <p class="text-gray-700 text-xs sm:text-sm">
+                  New MRR: $99/mo • Customer since: 6 months • Expansion revenue this quarter: $150
+                </p>
+              </div>
+              <p class="text-xs text-gray-500">Sent by Stripe from Initech</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Integrations Section -->
+<div class="py-12 sm:py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-xl sm:text-2xl font-bold text-gray-900">Integrates with</h2>
+      <div class="mt-6 sm:mt-10 grid grid-cols-2 gap-6 sm:gap-12 md:gap-16 md:grid-cols-4 items-center justify-items-center">
+        <!-- Slack -->
+        <div class="flex justify-center">
+          <img src="{{ "/images/slack.svg" | relURL }}" alt="Slack" class="h-8 sm:h-10">
+        </div>
+        <!-- Stripe -->
+        <div class="flex justify-center">
+          <img src="{{ "/images/stripe.svg" | relURL }}" alt="Stripe" class="h-8 sm:h-10">
+        </div>
+        <!-- Shopify -->
+        <div class="flex justify-center">
+          <img src="{{ "/images/shopify.svg" | relURL }}" alt="Shopify" class="h-8 sm:h-10">
+        </div>
+        <!-- Maxio -->
+        <div class="flex justify-center">
+          <img src="{{ "/images/maxio.svg" | relURL }}" alt="Maxio" class="h-8 sm:h-10">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pricing CTA Section -->
+<div class="py-12 sm:py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Simple, transparent pricing</h2>
+    <p class="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">Start free, upgrade when you're ready. All paid plans include a 14-day trial.</p>
+    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="{{ "/pricing/" | relURL }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-[#f5710f] hover:bg-[#ea580c] transition-colors">
+        View Pricing
+      </a>
+      <a href="https://app.notipus.com" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+        Start Free
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="py-12 sm:py-16 bg-gradient-to-b from-white to-primary-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+      <div class="feature-card">
+        <div class="flex items-center mb-2 sm:mb-3">
+          <i class="ti ti-bolt text-xl sm:text-2xl text-primary-500 mr-2"></i>
+          <h3 class="text-base sm:text-lg font-semibold text-gray-900">Real-time Updates</h3>
+        </div>
+        <p class="text-sm sm:text-base text-gray-600">Instant notifications when customers sign up, upgrade, or need attention. No more checking dashboards.</p>
+      </div>
+      <div class="feature-card">
+        <div class="flex items-center mb-2 sm:mb-3">
+          <i class="ti ti-database text-xl sm:text-2xl text-primary-500 mr-2"></i>
+          <h3 class="text-base sm:text-lg font-semibold text-gray-900">Enriched Data</h3>
+        </div>
+        <p class="text-sm sm:text-base text-gray-600">Get detailed company background, LTV, and customer context automatically. No more TPS reports.</p>
+      </div>
+      <div class="feature-card sm:col-span-2 lg:col-span-1">
+        <div class="flex items-center mb-2 sm:mb-3">
+          <i class="ti ti-target text-xl sm:text-2xl text-primary-500 mr-2"></i>
+          <h3 class="text-base sm:text-lg font-semibold text-gray-900">Smart Prioritization</h3>
+        </div>
+        <p class="text-sm sm:text-base text-gray-600">Know exactly who needs attention with churn risk scores and engagement insights.</p>
+      </div>
+    </div>
+
+    <!-- Open Source CTA -->
+    <div class="mt-8 sm:mt-12 text-center">
+      <h3 class="text-lg sm:text-xl font-semibold text-gray-900">Proudly Open Source</h3>
+      <p class="mt-2 text-sm sm:text-base text-gray-600">Notipus is built in the open. Check out our code, contribute, or self-host. No pieces of flair required.</p>
+      <a href="https://github.com/Viktopia/notipus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-4 text-gray-900 hover:text-gray-700">
+        <i class="ti ti-brand-github text-2xl sm:text-3xl"></i>
+      </a>
+    </div>
+  </div>
+</div>
+{{ end }}

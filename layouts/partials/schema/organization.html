@@ -1,0 +1,29 @@
+{{- /* Organisation Schema.org structured data */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ .Site.Params.schema.organizationName | default .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "logo": "{{ "/images/logo.png" | absURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "sameAs": [
+    {{- $social := slice -}}
+    {{- with .Site.Params.social.twitter -}}
+      {{- $social = $social | append (printf "https://twitter.com/%s" (strings.TrimPrefix "@" .)) -}}
+    {{- end -}}
+    {{- with .Site.Params.social.github -}}
+      {{- $social = $social | append . -}}
+    {{- end -}}
+    {{- range $i, $url := $social -}}
+      {{- if $i }},{{ end }}
+    "{{ $url }}"
+    {{- end -}}
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "availableLanguage": "English"
+  }
+}
+</script>

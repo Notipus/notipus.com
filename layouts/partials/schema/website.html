@@ -1,0 +1,15 @@
+{{- /* WebSite Schema.org structured data */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "inLanguage": "{{ .Site.Params.language | default "en-US" }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.schema.organizationName | default .Site.Title }}"
+  }
+}
+</script>

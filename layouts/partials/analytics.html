@@ -1,0 +1,30 @@
+{{- /* Google Analytics */ -}}
+{{- with .Site.Params.analytics.gaId -}}
+{{- if hugo.IsProduction -}}
+<script>
+// Initialize Google Analytics
+(function initGA() {
+  const script = document.createElement('script');
+  script.src = 'https://www.googletagmanager.com/gtag/js?id={{ . }}';
+  script.async = true;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  window.gtag = gtag;
+
+  gtag('js', new Date());
+  gtag('config', '{{ . }}');
+})();
+
+// Helper function for tracking events
+function trackEvent(eventName, eventParams) {
+  if (window.gtag) {
+    window.gtag('event', eventName, eventParams);
+  }
+}
+</script>
+{{- end -}}
+{{- end -}}

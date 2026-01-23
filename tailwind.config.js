@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.html"],
+  content: ['./layouts/**/*.html', './content/**/*.md', './content/**/*.html'],
   theme: {
     extend: {
       colors: {
@@ -15,12 +15,9 @@ module.exports = {
           700: '#c44600',
           800: '#9c3800',
           900: '#7c2d00',
-        }
-      }
+        },
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
-}
-
+  plugins: [require('@tailwindcss/forms')],
+};

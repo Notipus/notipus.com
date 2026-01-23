@@ -1,0 +1,31 @@
+{{- /* SoftwareApplication Schema.org structured data */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ .Site.Params.schema.organizationName | default .Site.Title }}",
+  "applicationCategory": "{{ .Site.Params.schema.applicationCategory | default "BusinessApplication" }}",
+  "operatingSystem": "Web",
+  "description": "{{ .Site.Params.description }}",
+  "url": "{{ .Site.BaseURL }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Stripe integration",
+    "Shopify integration",
+    "Maxio integration",
+    "Slack notifications",
+    "Customer lifetime value tracking",
+    "Churn risk detection",
+    "Failed payment alerts",
+    "Trial expiration alerts"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.author | default "Viktopia Studio" }}"
+  }
+}
+</script>

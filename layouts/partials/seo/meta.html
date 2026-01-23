@@ -1,0 +1,55 @@
+{{- /* Standard Meta Tags for SEO */ -}}
+
+{{- /* Character encoding and viewport */ -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{- /* Title tag - critical for SEO */ -}}
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+{{- /* Meta description */ -}}
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .Summary -}}
+  {{- $description = .Summary | plainify | truncate 160 -}}
+{{- else -}}
+  {{- $description = .Site.Params.description -}}
+{{- end -}}
+<meta name="description" content="{{ $description }}">
+
+{{- /* Keywords */ -}}
+{{- if .Site.Params.keywords -}}
+<meta name="keywords" content="{{ .Site.Params.keywords }}">
+{{- end -}}
+
+{{- /* Author */ -}}
+{{- with .Site.Params.author -}}
+<meta name="author" content="{{ . }}">
+{{- end -}}
+
+{{- /* Canonical URL */ -}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- /* Language alternates */ -}}
+<link rel="alternate" hreflang="en-us" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+
+{{- /* Robots directives */ -}}
+{{- if .Params.noindex -}}
+<meta name="robots" content="noindex, nofollow">
+{{- else -}}
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+{{- end -}}
+
+{{- /* Theme colour for browsers - Notipus Orange */ -}}
+<meta name="theme-color" content="#f5710f">
+
+{{- /* Mobile web app capable */ -}}
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Notipus">
+
+{{- /* Format detection */ -}}
+<meta name="format-detection" content="telephone=no">
