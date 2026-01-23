@@ -10,13 +10,13 @@
 
   /* Better focus styles */
   :focus-visible {
-    outline: 2px solid #f5710f;
+    outline: 2px solid #c55a11;
     outline-offset: 2px;
   }
 
   /* Selection colors */
   ::selection {
-    background-color: #f5710f;
+    background-color: #c55a11;
     color: white;
   }
 }
@@ -37,6 +37,19 @@
 }
 
 @layer utilities {
+  /* Screen reader only - for accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
   /* Custom animations */
   .animate-fade-in-up {
     animation: fade-in-up 0.5s ease-out;

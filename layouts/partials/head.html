@@ -14,8 +14,9 @@
 <link rel="apple-touch-icon" href="{{ "/images/logo.png" | relURL }}">
 <link rel="manifest" href="{{ "/site.webmanifest" | relURL }}">
 
-{{- /* Tabler Icons (local) */ -}}
-<link rel="stylesheet" href="{{ "/vendor/tabler-icons/tabler-icons.min.css" | relURL }}">
+{{- /* Preconnect hints for external resources */ -}}
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
 {{- /* Tailwind CSS - processed by Hugo Pipes */ -}}
 {{- $css := resources.Get "css/main.css" -}}

@@ -88,9 +88,6 @@ disableKinds = ["taxonomy", "term"]
     source = "static"
     target = "static"
   [[module.mounts]]
-    source = "node_modules/@tabler/icons-webfont/dist"
-    target = "static/vendor/tabler-icons"
-  [[module.mounts]]
     source = "assets"
     target = "assets"
   [[module.mounts]]
