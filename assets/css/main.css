@@ -80,15 +80,15 @@
 }
 
 .prose h2 {
-  @apply mt-10 mb-4 text-2xl;
+  @apply mb-4 mt-10 text-2xl;
 }
 
 .prose h3 {
-  @apply mt-8 mb-3 text-xl;
+  @apply mb-3 mt-8 text-xl;
 }
 
 .prose h4 {
-  @apply mt-6 mb-2 text-lg;
+  @apply mb-2 mt-6 text-lg;
 }
 
 .prose p {
@@ -101,7 +101,7 @@
 
 .prose ul,
 .prose ol {
-  @apply pl-6 mb-4;
+  @apply mb-4 pl-6;
 }
 
 .prose li {
@@ -118,7 +118,7 @@
 
 /* Table styling for prose content */
 .prose table {
-  @apply w-full mb-6 text-sm;
+  @apply mb-6 w-full text-sm;
 }
 
 .prose thead {
@@ -126,11 +126,11 @@
 }
 
 .prose th {
-  @apply px-4 py-3 text-left font-semibold text-gray-900 border-b border-gray-200;
+  @apply border-b border-gray-200 px-4 py-3 text-left font-semibold text-gray-900;
 }
 
 .prose td {
-  @apply px-4 py-3 border-b border-gray-100;
+  @apply border-b border-gray-100 px-4 py-3;
 }
 
 .prose tbody tr:hover {
