@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Notipus - Payment Notifications That Spark Joy</title>
+    <title>Notipus - Never Miss a Payment Event Again</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on Notipus - Payment Notifications That Spark Joy</description>
+    <description>Recent content on Notipus - Never Miss a Payment Event Again</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
@@ -13,6 +13,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/pricing/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Privacy Policy - Notipus</title>
+      <link>http://localhost:1313/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/privacy/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Last updated: January 2026&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This privacy policy explains how Notipus (&amp;ldquo;we&amp;rdquo;, &amp;ldquo;us&amp;rdquo;, &amp;ldquo;our&amp;rdquo;) collects, uses, stores, and protects your personal data when you use our service.&lt;/p&gt;&#xA;&lt;p&gt;Notipus is a multi-tenant SaaS notification service that receives webhook events from business tools (such as payment processors and e-commerce platforms) and delivers formatted notifications to team communication platforms. We are committed to protecting your privacy and handling your data transparently and in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -3,7 +3,7 @@
 
 baseURL = "https://notipus.com/"
 languageCode = "en-US"
-title = "Notipus - Payment Notifications That Spark Joy"
+title = "Notipus - Never Miss a Payment Event Again"
 
 # SEO-friendly URL settings
 canonifyURLs = true
@@ -52,7 +52,7 @@ disableKinds = ["taxonomy", "term"]
 # Site parameters
 [params]
   # Site metadata
-  description = "Beautifully enriched Slack notifications for Stripe, Shopify, and Maxio. Get customer context, smart insights, and actionable intelligence with every payment alert."
+  description = "Set up in minutes. Get notified in seconds. Enriched Slack notifications with customer context, smart insights, and everything your team needs to act fast. 100% open source."
   keywords = "stripe slack notifications, payment alerts, subscription notifications, stripe webhooks slack, shopify notifications, maxio alerts, chargify alerts, customer intelligence, failed payment alerts, subscription management"
   author = "Viktopia Studio"
   

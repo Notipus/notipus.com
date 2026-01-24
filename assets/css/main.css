@@ -79,15 +79,60 @@
   @apply font-bold text-gray-900;
 }
 
+.prose h2 {
+  @apply mt-10 mb-4 text-2xl;
+}
+
+.prose h3 {
+  @apply mt-8 mb-3 text-xl;
+}
+
+.prose h4 {
+  @apply mt-6 mb-2 text-lg;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
 .prose a {
   @apply text-primary-600 underline hover:text-primary-700;
 }
 
 .prose ul,
 .prose ol {
-  @apply pl-6;
+  @apply pl-6 mb-4;
 }
 
 .prose li {
   @apply mb-2;
+}
+
+.prose strong {
+  @apply font-semibold text-gray-900;
+}
+
+.prose hr {
+  @apply my-8 border-gray-200;
+}
+
+/* Table styling for prose content */
+.prose table {
+  @apply w-full mb-6 text-sm;
+}
+
+.prose thead {
+  @apply bg-gray-50;
+}
+
+.prose th {
+  @apply px-4 py-3 text-left font-semibold text-gray-900 border-b border-gray-200;
+}
+
+.prose td {
+  @apply px-4 py-3 border-b border-gray-100;
+}
+
+.prose tbody tr:hover {
+  @apply bg-gray-50;
 }

@@ -24,3 +24,7 @@ Thumbs.db
 # Build files
 dist/
 build/
+
+# Hugo build output
+public/
+resources/_gen/
