@@ -12,7 +12,7 @@ Notipus delivers beautifully enriched Slack notifications for payment events fro
 - Failed payment and trial expiration alerts
 
 ## Open Source
-Repository: https://github.com/Viktopia/notipus
+Repository: https://github.com/Notipus/Notipus
 
 ## Contact
 Website: https://notipus.com
