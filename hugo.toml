@@ -15,6 +15,7 @@ disablePathToLower = false
 enableRobotsTXT = true
 enableGitInfo = false
 enableEmoji = false
+ignoreFiles = ["CLAUDE\\.md$", "README\\.md$"]
 
 # Sitemap settings
 [sitemap]

@@ -1,0 +1,85 @@
+{{ define "main" }}
+<!-- FAQ Hero -->
+<div class="hero">
+  <div class="container-lg py-12 sm:py-16 lg:py-20 text-center">
+    <h1 class="hero-title">Frequently Asked Questions</h1>
+    <p class="hero-subtitle max-w-2xl mx-auto">Everything you need to know about Notipus</p>
+  </div>
+</div>
+
+<!-- FAQ Content -->
+<div class="section-lg bg-white">
+  <div class="container-sm">
+    <dl class="faq">
+      <div>
+        <dt>Why do I need this?</dt>
+        <dd>Because important customer moments—upgrades, cancellations, milestones—get buried in billing tools nobody checks. Notipus puts them where your team actually looks: Slack.</dd>
+      </div>
+
+      <div>
+        <dt>What will my team actually find out about?</dt>
+        <dd>
+          <ul>
+            <li>New paying customers</li>
+            <li>Upgrades and downgrades</li>
+            <li>Failed payments and cancellations</li>
+            <li>Milestones like $10k lifetime value or a 1-year anniversary</li>
+          </ul>
+        </dd>
+      </div>
+
+      <div>
+        <dt>Will this add more noise to Slack?</dt>
+        <dd>Less, actually. Instead of getting pinged five times for one customer action, you get one message with everything you need to know.</dd>
+      </div>
+
+      <div>
+        <dt>What context comes with each notification?</dt>
+        <dd>Who the company is, how big they are, how long they've been a customer, what they've paid over time, and (optionally) the person's name and role.</dd>
+      </div>
+
+      <div>
+        <dt>What billing tools does it work with?</dt>
+        <dd>Stripe, Shopify, and Chargify.</dd>
+      </div>
+
+      <div>
+        <dt>Who is this for?</dt>
+        <dd>SaaS teams, e-commerce businesses, anyone with recurring revenue who wants to stay close to their customers without living inside a billing dashboard.</dd>
+      </div>
+
+      <div>
+        <dt>Is Notipus open source?</dt>
+        <dd>Yes! Notipus is fully open source. You can self-host it for free, or use our managed service for convenience. Check out our <a href="https://github.com/Notipus/Notipus">GitHub repository</a>.</dd>
+      </div>
+
+      <div>
+        <dt>What counts as an event?</dt>
+        <dd>An event is any notification sent to Slack—new signups, payments, failed charges, subscription changes, and more. Each payment event that results in a notification counts as one event.</dd>
+      </div>
+
+      <div>
+        <dt>Can I change plans anytime?</dt>
+        <dd>Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll be prorated for the remainder of your billing period. When downgrading, the new rate takes effect at your next billing date.</dd>
+      </div>
+
+      <div>
+        <dt>What happens if I exceed my event limit?</dt>
+        <dd>We'll notify you when you're approaching your limit. If you exceed it, notifications will continue but we'll reach out to discuss upgrading. We never cut you off without warning.</dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<div class="section-lg bg-gray-50">
+  <div class="container-md text-center">
+    <h2 class="section-title">Still have questions?</h2>
+    <p class="section-subtitle">We're here to help. Reach out and we'll get back to you as soon as we can.</p>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="mailto:hello@notipus.com" class="btn-primary">Contact Us</a>
+      <a href="{{ "/pricing/" | relURL }}" class="btn-secondary">View Pricing</a>
+    </div>
+  </div>
+</div>
+{{ end }}

@@ -18,5 +18,11 @@
   {{- if .IsHome -}}
     {{- partial "schema/software.html" . -}}
   {{- end -}}
+  {{- if eq .RelPermalink "/pricing/" -}}
+    {{- partial "schema/pricing.html" . -}}
+  {{- end -}}
+  {{- if eq .RelPermalink "/faq/" -}}
+    {{- partial "schema/faqpage.html" . -}}
+  {{- end -}}
 </body>
 </html>

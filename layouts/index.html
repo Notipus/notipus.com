@@ -21,238 +21,197 @@
 
 <!-- Slack Preview Section -->
 <div class="py-12 sm:py-16 bg-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-6 sm:mb-8">
       <h2 class="text-xl sm:text-2xl font-bold text-gray-900">See it in action</h2>
       <p class="mt-2 text-sm sm:text-base text-gray-600">Rich, contextual notifications directly in Slack</p>
     </div>
 
-    <!-- Notification Examples Grid -->
-    <div class="space-y-4 sm:space-y-6">
-      
-      <!-- Success: Bill Lumbergh -->
-      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-        <div class="p-3 sm:p-4">
-          <div class="flex items-start space-x-2 sm:space-x-3">
-            <div class="flex-shrink-0">
-              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded" loading="lazy" width="36" height="36">
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
-                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
-                <span class="text-xs text-gray-500">9:41 AM</span>
+    <!-- Notification Carousel -->
+    <div class="carousel-container">
+      <div class="carousel-track">
+        {{- range $i := slice 1 2 -}}
+
+        <!-- New Subscription: Bill Lumbergh -->
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start space-x-3">
+              <div class="flex-shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
               </div>
-              <!-- Header -->
-              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">💰 $2,499.00 from Initech</p>
-              <!-- Insight line -->
-              <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">🎉 Crossed $10,000 lifetime!</span></p>
-              <!-- Provider badges -->
-              <p class="text-gray-600 mb-2 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••4242</p>
-              <!-- Payment details -->
-              <div class="bg-gray-50 p-2 sm:p-3 rounded mb-2 text-xs sm:text-sm">
-                <p class="font-bold text-gray-900 mb-1">📊 Payment Details</p>
-                <p class="text-gray-700"><strong>Amount:</strong> USD 2,499.00/mo = $29,988 ARR</p>
-                <p class="text-gray-700"><strong>Plan:</strong> Enterprise</p>
-                <p class="text-gray-700"><strong>Subscription:</strong> #sub_initech_001</p>
-              </div>
-              <!-- Divider -->
-              <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
-              <!-- Company enrichment -->
-              <div class="mb-2">
-                <p class="font-bold text-gray-900 text-sm sm:text-base">🏢 Initech</p>
-                <p class="text-gray-500 text-xs italic">Technology • Founded 1988 • 51-200 employees</p>
-                <p class="text-gray-600 text-xs sm:text-sm mt-1 border-l-4 border-gray-300 pl-2">Software development and IT services company based in Austin, Texas. Yeahhh, that'd be great.</p>
-              </div>
-              <!-- Company links -->
-              <p class="text-[#1264a3] mb-2 text-xs">🌐 Website • 💼 LinkedIn</p>
-              <!-- Customer footer -->
-              <p class="text-xs text-gray-600 mb-2">
-                👤 <span class="text-[#1264a3]">blumbergh@initech.com</span> • 📅 Since Mar 2024 • 💰 $12.5k LTV • <span class="font-bold">⭐ VIP</span>
-              </p>
-              <!-- Action buttons -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">Website</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                  <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-xs text-gray-500">9:41 AM</span>
+                </div>
+                <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">🎉 $2,499.00 from Initech</p>
+                <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">🏆 Crossed $10,000 lifetime value!</span></p>
+                <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••4242</p>
+                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                  <p class="text-gray-700"><strong>Plan:</strong> Enterprise</p>
+                  <p class="text-gray-700"><strong>ID:</strong> sub_initech_001</p>
+                </div>
+                <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
+                <div class="mb-2">
+                  <p class="font-bold text-gray-900 text-sm sm:text-base">🏢 Initech</p>
+                  <p class="text-gray-500 text-xs italic">Software development • Founded 1988</p>
+                </div>
+                <p class="text-[#1264a3] mb-2 text-xs">💼 LinkedIn</p>
+                <p class="text-xs text-gray-600 mb-2">
+                  <span class="font-bold">⭐ VIP</span> • 👤 <span class="text-[#1264a3]">blumbergh@initech.com</span> • 📅 Since Mar 2024 • 💰 $12.5k LTV
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">LinkedIn</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Failed Payment: Milton -->
-      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-        <div class="p-3 sm:p-4">
-          <div class="flex items-start space-x-2 sm:space-x-3">
-            <div class="flex-shrink-0">
-              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded" loading="lazy" width="36" height="36">
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
-                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
-                <span class="text-xs text-gray-500">9:42 AM</span>
+        <!-- Payment Failed: Milton Waddams -->
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start space-x-3">
+              <div class="flex-shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
               </div>
-              <!-- Header -->
-              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">❌ Payment failed for Initech</p>
-              <!-- Insight line -->
-              <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">⚠️ Card declined - 2nd attempt this month</span></p>
-              <!-- Provider badges -->
-              <p class="text-gray-600 mb-2 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly)</p>
-              <!-- Payment details -->
-              <div class="bg-gray-50 p-2 sm:p-3 rounded mb-2 text-xs sm:text-sm">
-                <p class="font-bold text-gray-900 mb-1">📊 Payment Details</p>
-                <p class="text-gray-700"><strong>Amount:</strong> USD 99.00/mo</p>
-                <p class="text-gray-700"><strong>Plan:</strong> Pro</p>
-                <p class="text-gray-700"><strong>Subscription:</strong> #sub_milton_456</p>
-                <p class="text-gray-700"><strong>❌ Reason:</strong> Card declined</p>
-              </div>
-              <!-- Divider -->
-              <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
-              <!-- Customer footer -->
-              <p class="text-xs text-gray-600 mb-2">
-                👤 <span class="text-[#1264a3]">mwaddams@initech.com</span> • 📅 Since Jan 2022 • 💰 $2.4k LTV • <span class="font-bold">🚨 At Risk</span>
-              </p>
-              <!-- Action buttons -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">Contact Customer</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                  <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-xs text-gray-500">9:42 AM</span>
+                </div>
+                <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">❌ $99.00 from Initech</p>
+                <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••9012</p>
+                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                  <p class="text-gray-700"><strong>Plan:</strong> Pro</p>
+                  <p class="text-gray-700"><strong>ID:</strong> sub_milton_456</p>
+                  <p class="text-gray-700"><strong>Failed:</strong> Card declined</p>
+                </div>
+                <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
+                <div class="mb-2">
+                  <p class="font-bold text-gray-900 text-sm sm:text-base">🏢 Initech</p>
+                  <p class="text-gray-500 text-xs italic">Software development • Founded 1988</p>
+                </div>
+                <p class="text-[#1264a3] mb-2 text-xs">💼 LinkedIn</p>
+                <p class="text-xs text-gray-600 mb-2">
+                  <span class="font-bold">🚨 At Risk</span> • 👤 <span class="text-[#1264a3]">mwaddams@initech.com</span> • 📅 Since Jan 2022 • 💰 $2.4k LTV
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">Contact Customer</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Trial Expiring: Peter -->
-      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-        <div class="p-3 sm:p-4">
-          <div class="flex items-start space-x-2 sm:space-x-3">
-            <div class="flex-shrink-0">
-              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded" loading="lazy" width="36" height="36">
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
-                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
-                <span class="text-xs text-gray-500">9:43 AM</span>
+        <!-- Upgrade: Michael Bolton -->
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start space-x-3">
+              <div class="flex-shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
               </div>
-              <!-- Header -->
-              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">⏳ Trial ending for Initech</p>
-              <!-- Insight line -->
-              <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">✨ They've been loving Dashboard and API features!</span></p>
-              <!-- Provider badges -->
-              <p class="text-gray-600 mb-2 text-xs sm:text-sm">💳 Stripe • 📊 Subscription</p>
-              <!-- Usage summary -->
-              <div class="bg-gray-50 p-2 sm:p-3 rounded mb-2 text-xs sm:text-sm">
-                <p class="font-bold text-gray-900 mb-1">💬 Usage Summary</p>
-                <p class="text-gray-700"><strong>Trial Days Remaining:</strong> 3</p>
-                <p class="text-gray-700"><strong>Features Used:</strong> Dashboard, API, Reports</p>
-                <p class="text-gray-700"><strong>Active Users:</strong> 8</p>
-              </div>
-              <!-- Divider -->
-              <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
-              <!-- Company enrichment -->
-              <div class="mb-2">
-                <p class="font-bold text-gray-900 text-sm sm:text-base">🏢 Initech</p>
-                <p class="text-gray-500 text-xs italic">Technology • Founded 1988 • 51-200 employees</p>
-              </div>
-              <!-- Customer footer -->
-              <p class="text-xs text-gray-600 mb-2">
-                👤 <span class="text-[#1264a3]">pgibbons@initech.com</span> • 📅 Since Jan 2026
-              </p>
-              <!-- Action buttons -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">Schedule Call</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                  <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-xs text-gray-500">9:43 AM</span>
+                </div>
+                <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">⬆️ $199.00 from Initech</p>
+                <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">🎉 Upgraded from $99/mo!</span></p>
+                <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••5555</p>
+                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                  <p class="text-gray-700"><strong>Plan:</strong> Business</p>
+                  <p class="text-gray-700"><strong>ID:</strong> sub_bolton_789</p>
+                </div>
+                <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
+                <div class="mb-2">
+                  <p class="font-bold text-gray-900 text-sm sm:text-base">🏢 Initech</p>
+                  <p class="text-gray-500 text-xs italic">Software development • Founded 1988</p>
+                </div>
+                <p class="text-[#1264a3] mb-2 text-xs">💼 LinkedIn</p>
+                <p class="text-xs text-gray-600 mb-2">
+                  👤 <span class="text-[#1264a3]">mbolton@initech.com</span> • 📅 Since Jul 2025 • 💰 $594 LTV
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">LinkedIn</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Upgrade: Michael Bolton -->
-      <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-        <div class="p-3 sm:p-4">
-          <div class="flex items-start space-x-2 sm:space-x-3">
-            <div class="flex-shrink-0">
-              <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-8 w-8 sm:h-9 sm:w-9 rounded" loading="lazy" width="36" height="36">
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
-                <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
-                <span class="text-xs text-gray-500">9:44 AM</span>
+        <!-- Trial Converted: Peter Gibbons -->
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start space-x-3">
+              <div class="flex-shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
               </div>
-              <!-- Header -->
-              <p class="font-bold text-gray-900 mb-1 text-sm sm:text-base">🎉 Plan upgrade from Initech</p>
-              <!-- Insight line -->
-              <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">📈 Upgraded from Basic to Pro!</span></p>
-              <!-- Provider badges -->
-              <p class="text-gray-600 mb-2 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly)</p>
-              <!-- Payment details -->
-              <div class="bg-gray-50 p-2 sm:p-3 rounded mb-2 text-xs sm:text-sm">
-                <p class="font-bold text-gray-900 mb-1">📊 Payment Details</p>
-                <p class="text-gray-700"><strong>Amount:</strong> USD 99.00/mo = $1,188 ARR</p>
-                <p class="text-gray-700"><strong>Plan:</strong> Pro</p>
-              </div>
-              <!-- Divider -->
-              <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
-              <!-- Company enrichment -->
-              <div class="mb-2">
-                <p class="font-bold text-gray-900 text-sm sm:text-base">🏢 Initech</p>
-                <p class="text-gray-500 text-xs italic">Technology • Founded 1988 • 51-200 employees</p>
-              </div>
-              <!-- Company links -->
-              <p class="text-[#1264a3] mb-2 text-xs">🌐 Website • 💼 LinkedIn</p>
-              <!-- Customer footer -->
-              <p class="text-xs text-gray-600 mb-2">
-                👤 <span class="text-[#1264a3]">mbolton@initech.com</span> • 📅 Since Jul 2025 • 💰 $348 LTV • 📦 6 orders
-              </p>
-              <!-- Action buttons -->
-              <div class="flex flex-wrap gap-2">
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">Website</span>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
+                  <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-xs text-gray-500">9:44 AM</span>
+                </div>
+                <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">✅ $149.00 from Initech</p>
+                <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">🎉 Trial converted to paid!</span></p>
+                <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Mastercard ••••8821</p>
+                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                  <p class="text-gray-700"><strong>Plan:</strong> Starter</p>
+                  <p class="text-gray-700"><strong>ID:</strong> sub_gibbons_123</p>
+                </div>
+                <p class="text-gray-300 text-xs mb-2">────────────────────────────</p>
+                <div class="mb-2">
+                  <p class="font-bold text-gray-900 text-sm sm:text-base">🏢 Initech</p>
+                  <p class="text-gray-500 text-xs italic">Software development • Founded 1988</p>
+                </div>
+                <p class="text-[#1264a3] mb-2 text-xs">💼 LinkedIn</p>
+                <p class="text-xs text-gray-600 mb-2">
+                  👤 <span class="text-[#1264a3]">pgibbons@initech.com</span> • 📅 Since Jan 2026 • 💰 $149 LTV
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">LinkedIn</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
+        {{- end -}}
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Integrations Section -->
-<div class="py-12 sm:py-16 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h2 class="text-xl sm:text-2xl font-bold text-gray-900">Integrates with</h2>
-      <div class="mt-8 sm:mt-12 flex flex-wrap justify-center items-center gap-10 sm:gap-14 lg:gap-20">
-        <!-- Slack -->
-        <img src="{{ "/images/slack.svg" | relURL }}" alt="Slack" class="h-7 sm:h-9 md:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy" width="109" height="40">
-        <!-- Stripe -->
-        <img src="{{ "/images/stripe.svg" | relURL }}" alt="Stripe" class="h-7 sm:h-9 md:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy" width="96" height="40">
-        <!-- Shopify -->
-        <img src="{{ "/images/shopify.svg" | relURL }}" alt="Shopify" class="h-7 sm:h-9 md:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy" width="120" height="40">
-        <!-- Maxio -->
-        <img src="{{ "/images/maxio.svg" | relURL }}" alt="Maxio" class="h-7 sm:h-9 md:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy" width="100" height="40">
-      </div>
+<div class="section bg-gray-50">
+  <div class="container-lg text-center">
+    <h2 class="text-xl sm:text-2xl font-bold text-gray-900">Integrates with</h2>
+    <div class="mt-8 sm:mt-12 flex flex-wrap justify-center items-center gap-10 sm:gap-14 lg:gap-20">
+      <img src="{{ "/images/slack.svg" | relURL }}" alt="Slack" class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy">
+      <img src="{{ "/images/stripe.svg" | relURL }}" alt="Stripe" class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy">
+      <img src="{{ "/images/shopify.svg" | relURL }}" alt="Shopify" class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy">
+      <img src="{{ "/images/maxio.svg" | relURL }}" alt="Maxio" class="h-8 sm:h-10 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy">
+      <img src="{{ "/images/hunter.svg" | relURL }}" alt="Hunter" class="h-5 sm:h-6 w-auto grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all" loading="lazy">
     </div>
   </div>
 </div>
 
 <!-- Pricing CTA Section -->
-<div class="py-12 sm:py-16 bg-white">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Simple, transparent pricing</h2>
-    <p class="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600">Start free, upgrade when you're ready. All paid plans include a 14-day trial.</p>
+<div class="section bg-white">
+  <div class="container-md text-center">
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p class="section-subtitle">Start free, upgrade when you're ready. All paid plans include a 14-day trial.</p>
     <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="{{ "/pricing/" | relURL }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-[#c55a11] hover:bg-[#a3480e] transition-colors">
-        View Pricing
-      </a>
-      <a href="https://app.notipus.com" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors">
-        Start Free
-      </a>
+      <a href="{{ "/pricing/" | relURL }}" class="btn-primary">View Pricing</a>
+      <a href="https://app.notipus.com" class="btn-secondary">Start for Free</a>
     </div>
   </div>
 </div>
@@ -297,18 +256,18 @@
 </div>
 
 <!-- Your Data, Your Terms Section -->
-<div class="py-12 sm:py-16 bg-gray-50">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Your Data, Your Terms</h2>
-    <p class="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+<div class="section bg-gray-50">
+  <div class="container-md text-center">
+    <h2 class="section-title">Your Data, Your Terms</h2>
+    <p class="section-subtitle max-w-2xl mx-auto">
       Notipus is 100% open source. Self-host on your own infrastructure, export your data anytime, or use our managed service. No lock-in, no surprises.
     </p>
     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="https://github.com/Notipus/Notipus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gray-900 hover:bg-gray-800 transition-colors">
+      <a href="https://github.com/Notipus/Notipus" target="_blank" rel="noopener noreferrer" class="btn-dark">
         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         View on GitHub
       </a>
-      <a href="https://github.com/Notipus/Notipus#self-hosting" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+      <a href="https://github.com/Notipus/Notipus#self-hosting" target="_blank" rel="noopener noreferrer" class="btn-secondary">
         Self-Hosting Docs
       </a>
     </div>
