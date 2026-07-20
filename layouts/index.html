@@ -1,6 +1,6 @@
 {{ define "main" }}
 <!-- Hero Section -->
-<div class="relative bg-gradient-to-b from-primary-50 to-white overflow-hidden">
+<div class="relative bg-linear-to-b from-primary-50 to-white overflow-hidden">
   <div class="max-w-7xl mx-auto pt-12 pb-16 sm:pt-16 sm:pb-24 px-4 sm:px-6 lg:px-8">
     <div class="text-center">
       <h1 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
@@ -33,22 +33,22 @@
         {{- range $i := slice 1 2 -}}
 
         <!-- New Subscription: Bill Lumbergh -->
-        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-xs overflow-hidden">
           <div class="p-5 sm:p-6">
             <div class="flex items-start space-x-3">
-              <div class="flex-shrink-0">
-                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
+              <div class="shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded-sm" loading="lazy" width="40" height="40">
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
                   <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded-sm">APP</span>
                   <span class="text-xs text-gray-500">9:41 AM</span>
                 </div>
                 <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">🎉 $2,499.00 from Initech</p>
                 <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">🏆 Crossed $10,000 lifetime value!</span></p>
                 <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••4242</p>
-                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                <div class="bg-gray-50 p-2 sm:p-3 rounded-sm mb-3 text-xs sm:text-sm">
                   <p class="text-gray-700"><strong>Plan:</strong> Enterprise</p>
                   <p class="text-gray-700"><strong>ID:</strong> sub_initech_001</p>
                 </div>
@@ -62,8 +62,8 @@
                   <span class="font-bold">⭐ VIP</span> • 👤 <span class="text-[#1264a3]">blumbergh@initech.com</span> • 📅 Since Mar 2024 • 💰 $12.5k LTV
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">LinkedIn</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">LinkedIn</span>
                 </div>
               </div>
             </div>
@@ -71,21 +71,21 @@
         </div>
 
         <!-- Payment Failed: Milton Waddams -->
-        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-xs overflow-hidden">
           <div class="p-5 sm:p-6">
             <div class="flex items-start space-x-3">
-              <div class="flex-shrink-0">
-                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
+              <div class="shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded-sm" loading="lazy" width="40" height="40">
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
                   <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded-sm">APP</span>
                   <span class="text-xs text-gray-500">9:42 AM</span>
                 </div>
                 <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">❌ $99.00 from Initech</p>
                 <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••9012</p>
-                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                <div class="bg-gray-50 p-2 sm:p-3 rounded-sm mb-3 text-xs sm:text-sm">
                   <p class="text-gray-700"><strong>Plan:</strong> Pro</p>
                   <p class="text-gray-700"><strong>ID:</strong> sub_milton_456</p>
                   <p class="text-gray-700"><strong>Failed:</strong> Card declined</p>
@@ -100,8 +100,8 @@
                   <span class="font-bold">🚨 At Risk</span> • 👤 <span class="text-[#1264a3]">mwaddams@initech.com</span> • 📅 Since Jan 2022 • 💰 $2.4k LTV
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">Contact Customer</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">Contact Customer</span>
                 </div>
               </div>
             </div>
@@ -109,22 +109,22 @@
         </div>
 
         <!-- Upgrade: Michael Bolton -->
-        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-xs overflow-hidden">
           <div class="p-5 sm:p-6">
             <div class="flex items-start space-x-3">
-              <div class="flex-shrink-0">
-                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
+              <div class="shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded-sm" loading="lazy" width="40" height="40">
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
                   <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded-sm">APP</span>
                   <span class="text-xs text-gray-500">9:43 AM</span>
                 </div>
                 <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">⬆️ $199.00 from Initech</p>
                 <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">🎉 Upgraded from $99/mo!</span></p>
                 <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••5555</p>
-                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                <div class="bg-gray-50 p-2 sm:p-3 rounded-sm mb-3 text-xs sm:text-sm">
                   <p class="text-gray-700"><strong>Plan:</strong> Business</p>
                   <p class="text-gray-700"><strong>ID:</strong> sub_bolton_789</p>
                 </div>
@@ -138,8 +138,8 @@
                   👤 <span class="text-[#1264a3]">mbolton@initech.com</span> • 📅 Since Jul 2025 • 💰 $594 LTV
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">LinkedIn</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">LinkedIn</span>
                 </div>
               </div>
             </div>
@@ -147,22 +147,22 @@
         </div>
 
         <!-- Trial Converted: Peter Gibbons -->
-        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div class="carousel-card bg-white border border-gray-200 rounded-lg shadow-xs overflow-hidden">
           <div class="p-5 sm:p-6">
             <div class="flex items-start space-x-3">
-              <div class="flex-shrink-0">
-                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded" loading="lazy" width="40" height="40">
+              <div class="shrink-0">
+                <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus" class="h-9 w-9 sm:h-10 sm:w-10 rounded-sm" loading="lazy" width="40" height="40">
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center flex-wrap gap-1 sm:gap-2 mb-1">
                   <span class="font-bold text-gray-900 text-sm sm:text-base">Notipus</span>
-                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">APP</span>
+                  <span class="text-[10px] font-medium bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded-sm">APP</span>
                   <span class="text-xs text-gray-500">9:44 AM</span>
                 </div>
                 <p class="font-bold text-gray-900 mb-2 text-sm sm:text-base">✅ $149.00 from Initech</p>
                 <p class="mb-2 text-xs sm:text-sm"><span class="font-bold">🎉 Trial converted to paid!</span></p>
                 <p class="text-gray-600 mb-3 text-xs sm:text-sm">💳 Stripe • 🔄 Recurring (Monthly) • Mastercard ••••8821</p>
-                <div class="bg-gray-50 p-2 sm:p-3 rounded mb-3 text-xs sm:text-sm">
+                <div class="bg-gray-50 p-2 sm:p-3 rounded-sm mb-3 text-xs sm:text-sm">
                   <p class="text-gray-700"><strong>Plan:</strong> Starter</p>
                   <p class="text-gray-700"><strong>ID:</strong> sub_gibbons_123</p>
                 </div>
@@ -176,8 +176,8 @@
                   👤 <span class="text-[#1264a3]">pgibbons@initech.com</span> • 📅 Since Jan 2026 • 💰 $149 LTV
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">View in Stripe</span>
-                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded border border-gray-300">LinkedIn</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">View in Stripe</span>
+                  <span class="inline-block text-[10px] sm:text-xs bg-white text-gray-700 px-2 py-1 rounded-sm border border-gray-300">LinkedIn</span>
                 </div>
               </div>
             </div>
@@ -217,26 +217,26 @@
 </div>
 
 <!-- Features Section -->
-<div class="py-12 sm:py-16 bg-gradient-to-b from-white to-primary-50">
+<div class="py-12 sm:py-16 bg-linear-to-b from-white to-primary-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
       <div class="feature-card">
         <div class="flex items-center mb-2 sm:mb-3">
-          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-primary-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg>
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-primary-500 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg>
           <h3 class="text-base sm:text-lg font-semibold text-gray-900">Every Event, in Seconds</h3>
         </div>
         <p class="text-sm sm:text-base text-gray-600">New subscriptions, upgrades, downgrades, failed payments, trial conversions, cancellations, refunds — from webhook to Slack in seconds.</p>
       </div>
       <div class="feature-card">
         <div class="flex items-center mb-2 sm:mb-3">
-          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-primary-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6a8 3 0 0 0 16 0v-6"/><path d="M4 12v6a8 3 0 0 0 16 0v-6"/></svg>
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-primary-500 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6a8 3 0 0 0 16 0v-6"/><path d="M4 12v6a8 3 0 0 0 16 0v-6"/></svg>
           <h3 class="text-base sm:text-lg font-semibold text-gray-900">Customer Context Built In</h3>
         </div>
         <p class="text-sm sm:text-base text-gray-600">Every alert includes the company's background and size, the contact's name and role, lifetime value, and how long they've been a customer — enriched automatically. No more TPS reports.</p>
       </div>
       <div class="feature-card sm:col-span-2 lg:col-span-1">
         <div class="flex items-center mb-2 sm:mb-3">
-          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-primary-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="9"/></svg>
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 text-primary-500 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="9"/></svg>
           <h3 class="text-base sm:text-lg font-semibold text-gray-900">Insights, Not Noise</h3>
         </div>
         <p class="text-sm sm:text-base text-gray-600">VIP and at-risk flags, lifetime-value milestones, and trial-conversion alerts — with duplicate events consolidated into a single message instead of five pings.</p>

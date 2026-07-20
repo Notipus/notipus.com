@@ -5,13 +5,18 @@
       true,
       {
         "ignoreAtRules": [
-          "tailwind",
+          "theme",
+          "utility",
+          "plugin",
+          "source",
+          "variant",
+          "custom-variant",
+          "reference",
+          "config",
           "apply",
           "layer",
-          "variants",
-          "responsive",
-          "screen",
-          "config"
+          "tailwind",
+          "screen"
         ]
       }
     ],
@@ -34,7 +39,9 @@
       {
         "ignoreKeywords": ["optimizeLegibility"]
       }
-    ]
+    ],
+    "nesting-selector-no-missing-scoping-root": null,
+    "no-invalid-position-declaration": null
   },
   "ignoreFiles": ["node_modules/**", "public/**", "resources/**"]
 }

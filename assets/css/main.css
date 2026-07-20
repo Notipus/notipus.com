@@ -1,6 +1,211 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-200: #ffd7aa;
+  --color-primary-300: #ffb77a;
+  --color-primary-400: #ff8c3c;
+  --color-primary-500: #ff6601;
+  --color-primary-600: #f05800;
+  --color-primary-700: #c44600;
+  --color-primary-800: #9c3800;
+  --color-primary-900: #7c2d00;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility nav-link {
+  /* Navigation */
+  @apply hover:text-primary-600 text-gray-600 transition-colors;
+}
+
+@utility btn {
+  /* Buttons */
+  @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-medium transition-colors;
+}
+
+@utility btn-primary {
+  @apply btn bg-[#c55a11] text-white hover:bg-[#a3480e];
+
+  .cta & {
+    @apply bg-white text-[#c55a11] hover:bg-orange-50;
+  }
+}
+
+@utility btn-secondary {
+  @apply btn border border-gray-300 bg-white text-gray-700 hover:bg-gray-50;
+}
+
+@utility btn-dark {
+  @apply btn bg-gray-900 text-white hover:bg-gray-800;
+}
+
+@utility feature-card {
+  /* Cards */
+  @apply border-primary-100 rounded-lg border bg-white p-6 shadow-xs;
+}
+
+@utility section {
+  /* Section containers */
+  @apply py-12 sm:py-16;
+}
+
+@utility section-lg {
+  @apply py-16 sm:py-20;
+}
+
+@utility container-sm {
+  @apply mx-auto max-w-3xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility container-md {
+  @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility container-lg {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility hero {
+  /* Page heroes */
+  @apply from-primary-50 bg-linear-to-b to-white;
+}
+
+@utility hero-title {
+  @apply text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl;
+}
+
+@utility hero-subtitle {
+  @apply mt-4 text-lg text-gray-600 sm:text-xl;
+}
+
+@utility section-title {
+  /* Section titles */
+  @apply text-2xl font-bold text-gray-900 sm:text-3xl;
+}
+
+@utility section-subtitle {
+  @apply mt-4 text-base text-gray-600 sm:text-lg;
+}
+
+@utility faq {
+  /* FAQ styling */
+  @apply divide-y divide-gray-200;
+
+  & > div {
+    @apply py-8;
+  }
+
+  & > div:first-child {
+    @apply pt-0;
+  }
+
+  & > div:last-child {
+    @apply pb-0;
+  }
+
+  & dt {
+    @apply text-lg font-semibold text-gray-900;
+  }
+
+  & dd {
+    @apply mt-4 text-gray-600;
+  }
+
+  & dd ul {
+    @apply list-inside list-disc space-y-2;
+  }
+
+  & a {
+    @apply text-[#c55a11] hover:underline;
+  }
+}
+
+@utility cta {
+  /* CTA sections */
+  @apply bg-[#c55a11];
+
+  & .btn-primary {
+    @apply bg-white text-[#c55a11] hover:bg-orange-50;
+  }
+}
+
+@utility cta-title {
+  @apply text-2xl font-bold text-white sm:text-3xl;
+}
+
+@utility cta-subtitle {
+  @apply mt-4 text-lg text-orange-100;
+}
+
+@utility sr-only {
+  /* Screen reader only - for accessibility */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@utility animate-fade-in-up {
+  /* Custom animations */
+  animation: fade-in-up 0.5s ease-out;
+}
+
+@utility carousel-container {
+  /* Infinite scroll carousel */
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+@utility carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scroll-left 60s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility carousel-card {
+  flex-shrink: 0;
+  width: 480px;
+
+  @media (width >= 640px) {
+    width: 560px;
+  }
+
+  @media (width >= 1024px) {
+    width: 640px;
+  }
+}
 
 @layer base {
   /* Smooth scrolling */
@@ -21,147 +226,7 @@
   }
 }
 
-@layer components {
-  /* Navigation */
-  .nav-link {
-    @apply text-gray-600 transition-colors hover:text-primary-600;
-  }
-
-  /* Buttons */
-  .btn {
-    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-medium transition-colors;
-  }
-
-  .btn-primary {
-    @apply btn bg-[#c55a11] text-white hover:bg-[#a3480e];
-  }
-
-  .btn-secondary {
-    @apply btn border border-gray-300 bg-white text-gray-700 hover:bg-gray-50;
-  }
-
-  .btn-dark {
-    @apply btn bg-gray-900 text-white hover:bg-gray-800;
-  }
-
-  /* Cards */
-  .feature-card {
-    @apply rounded-lg border border-primary-100 bg-white p-6 shadow-sm;
-  }
-
-  /* Section containers */
-  .section {
-    @apply py-12 sm:py-16;
-  }
-
-  .section-lg {
-    @apply py-16 sm:py-20;
-  }
-
-  .container-sm {
-    @apply mx-auto max-w-3xl px-4 sm:px-6 lg:px-8;
-  }
-
-  .container-md {
-    @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
-  }
-
-  .container-lg {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
-  }
-
-  /* Page heroes */
-  .hero {
-    @apply bg-gradient-to-b from-primary-50 to-white;
-  }
-
-  .hero-title {
-    @apply text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl;
-  }
-
-  .hero-subtitle {
-    @apply mt-4 text-lg text-gray-600 sm:text-xl;
-  }
-
-  /* Section titles */
-  .section-title {
-    @apply text-2xl font-bold text-gray-900 sm:text-3xl;
-  }
-
-  .section-subtitle {
-    @apply mt-4 text-base text-gray-600 sm:text-lg;
-  }
-
-  /* FAQ styling */
-  .faq {
-    @apply divide-y divide-gray-200;
-  }
-
-  .faq > div {
-    @apply py-8;
-  }
-
-  .faq > div:first-child {
-    @apply pt-0;
-  }
-
-  .faq > div:last-child {
-    @apply pb-0;
-  }
-
-  .faq dt {
-    @apply text-lg font-semibold text-gray-900;
-  }
-
-  .faq dd {
-    @apply mt-4 text-gray-600;
-  }
-
-  .faq dd ul {
-    @apply list-inside list-disc space-y-2;
-  }
-
-  .faq a {
-    @apply text-[#c55a11] hover:underline;
-  }
-
-  /* CTA sections */
-  .cta {
-    @apply bg-[#c55a11];
-  }
-
-  .cta-title {
-    @apply text-2xl font-bold text-white sm:text-3xl;
-  }
-
-  .cta-subtitle {
-    @apply mt-4 text-lg text-orange-100;
-  }
-
-  .cta .btn-primary {
-    @apply bg-white text-[#c55a11] hover:bg-orange-50;
-  }
-}
-
 @layer utilities {
-  /* Screen reader only - for accessibility */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  /* Custom animations */
-  .animate-fade-in-up {
-    animation: fade-in-up 0.5s ease-out;
-  }
-
   @keyframes fade-in-up {
     from {
       opacity: 0;
@@ -173,48 +238,12 @@
     }
   }
 
-  /* Infinite scroll carousel */
   @keyframes scroll-left {
     0% {
       transform: translateX(0);
     }
     100% {
       transform: translateX(-50%);
-    }
-  }
-
-  .carousel-container {
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  }
-
-  .carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    width: max-content;
-    animation: scroll-left 60s linear infinite;
-  }
-
-  .carousel-track:hover {
-    animation-play-state: paused;
-  }
-
-  .carousel-card {
-    flex-shrink: 0;
-    width: 480px;
-  }
-
-  @media (width >= 640px) {
-    .carousel-card {
-      width: 560px;
-    }
-  }
-
-  @media (width >= 1024px) {
-    .carousel-card {
-      width: 640px;
     }
   }
 }
@@ -232,15 +261,15 @@
 }
 
 .prose h2 {
-  @apply mb-4 mt-10 text-2xl;
+  @apply mt-10 mb-4 text-2xl;
 }
 
 .prose h3 {
-  @apply mb-3 mt-8 text-xl;
+  @apply mt-8 mb-3 text-xl;
 }
 
 .prose h4 {
-  @apply mb-2 mt-6 text-lg;
+  @apply mt-6 mb-2 text-lg;
 }
 
 .prose p {
@@ -248,7 +277,7 @@
 }
 
 .prose a {
-  @apply text-primary-600 underline hover:text-primary-700;
+  @apply text-primary-600 hover:text-primary-700 underline;
 }
 
 .prose ul,
