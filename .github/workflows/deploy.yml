@@ -38,6 +38,14 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Debug lightningcss (temporary)
+        run: |
+          ls node_modules | grep -i lightning || echo "NO lightningcss dirs"
+          ls node_modules/lightningcss-linux-x64-gnu/ 2>/dev/null || echo "NO gnu package"
+          node --version
+          node -e "require('lightningcss'); console.log('lightningcss loads OK')" || true
+          node -e "require('@tailwindcss/postcss'); console.log('tailwind postcss loads OK')" || true
+
       - name: Lint CSS
         run: bun run lint:css
 
