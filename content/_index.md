@@ -1,6 +1,6 @@
 ---
-title: 'Notipus - Never Miss a Payment Event Again'
+title: 'Notipus - Stripe, Shopify & Maxio Payment Notifications for Slack'
 description:
-  'Set up in minutes. Get notified in seconds. Enriched Slack notifications with customer context,
-  smart insights, and everything your team needs to act fast. 100% open source.'
+  'Turn Stripe, Shopify & Maxio payment events into enriched Slack notifications — customer context,
+  lifetime value, and churn-risk alerts. Self-host or managed.'
 ---

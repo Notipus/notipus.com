@@ -1,4 +1,4 @@
-{{- /* FAQPage Schema.org structured data */ -}}
+{{- /* FAQPage Schema.org structured data — keep in sync with layouts/faq.html */ -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,7 +41,7 @@
       "name": "What billing tools does it work with?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Stripe, Shopify, and Chargify."
+        "text": "Stripe, Shopify, and Maxio (formerly Chargify). Stripe and Shopify connect with one-click OAuth — no webhook secrets to copy."
       }
     },
     {
@@ -50,6 +50,38 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "SaaS teams, e-commerce businesses, anyone with recurring revenue who wants to stay close to their customers without living inside a billing dashboard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I see the code or self-host it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The full source code is on GitHub under a source-available license — you can read it, audit it, and self-host it for free. Or use our managed service for convenience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What counts as an event?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An event is any notification sent to Slack—new signups, payments, failed charges, subscription changes, and more. Each payment event that results in a notification counts as one event."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change plans anytime?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll be prorated for the remainder of your billing period. When downgrading, the new rate takes effect at your next billing date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I exceed my event limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We'll notify you when you're approaching your limit. If you exceed it, notifications will continue but we'll reach out to discuss upgrading. We never cut you off without warning."
       }
     }
   ]

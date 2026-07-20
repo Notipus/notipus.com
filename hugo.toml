@@ -3,7 +3,7 @@
 
 baseURL = "https://notipus.com/"
 languageCode = "en-US"
-title = "Notipus - Never Miss a Payment Event Again"
+title = "Notipus - Stripe, Shopify & Maxio Payment Notifications for Slack"
 
 # SEO-friendly URL settings
 canonifyURLs = true
@@ -13,7 +13,7 @@ disablePathToLower = false
 
 # Build settings
 enableRobotsTXT = true
-enableGitInfo = false
+enableGitInfo = true
 enableEmoji = false
 ignoreFiles = ["CLAUDE\\.md$", "README\\.md$"]
 
@@ -53,8 +53,7 @@ disableKinds = ["taxonomy", "term"]
 # Site parameters
 [params]
   # Site metadata
-  description = "Set up in minutes. Get notified in seconds. Enriched Slack notifications with customer context, smart insights, and everything your team needs to act fast. 100% open source."
-  keywords = "stripe slack notifications, payment alerts, subscription notifications, stripe webhooks slack, shopify notifications, maxio alerts, chargify alerts, customer intelligence, failed payment alerts, subscription management"
+  description = "Turn Stripe, Shopify & Maxio payment events into enriched Slack notifications — customer context, lifetime value, and churn-risk alerts. Self-host or managed."
   author = "Viktopia Studio"
   
   # Locale
@@ -67,6 +66,7 @@ disableKinds = ["taxonomy", "term"]
   
   # Open Graph / Social
   [params.social]
+    github = "https://github.com/Notipus/Notipus"
     ogImage = "/images/og-image.png"
     ogImageWidth = "1200"
     ogImageHeight = "630"

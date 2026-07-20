@@ -18,11 +18,6 @@
 {{- end -}}
 <meta name="description" content="{{ $description }}">
 
-{{- /* Keywords */ -}}
-{{- if .Site.Params.keywords -}}
-<meta name="keywords" content="{{ .Site.Params.keywords }}">
-{{- end -}}
-
 {{- /* Author */ -}}
 {{- with .Site.Params.author -}}
 <meta name="author" content="{{ . }}">
@@ -30,10 +25,6 @@
 
 {{- /* Canonical URL */ -}}
 <link rel="canonical" href="{{ .Permalink }}">
-
-{{- /* Language alternates */ -}}
-<link rel="alternate" hreflang="en-us" href="{{ .Permalink }}">
-<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
 
 {{- /* Robots directives */ -}}
 {{- if .Params.noindex -}}
