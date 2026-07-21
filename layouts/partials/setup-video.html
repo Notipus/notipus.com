@@ -16,7 +16,7 @@
     <div class="shot-frame mx-auto mt-10 max-w-4xl reveal">
       <video
         controls
-        preload="metadata"
+        preload="none"
         playsinline
         width="1920"
         height="1080"
@@ -24,6 +24,13 @@
         class="w-full"
       >
         <source src="{{ "/videos/onboarding.webm" | relURL }}" type="video/webm" />
+        <track
+          kind="captions"
+          src="{{ "/videos/onboarding.vtt" | relURL }}"
+          srclang="en"
+          label="English"
+          default
+        />
         Your browser doesn't support embedded video —
         <a href="{{ "/videos/onboarding.webm" | relURL }}">download the screencast</a> instead.
       </video>

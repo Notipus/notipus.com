@@ -320,7 +320,7 @@
   }
 
   & a {
-    @apply text-[#c55a11] hover:underline;
+    @apply text-[#c55a11] underline;
   }
 }
 
