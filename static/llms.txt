@@ -6,72 +6,63 @@
 > at-risk, LTV milestones, and trial conversions. Source-available; self-host for free or use
 > the managed service at https://app.notipus.com.
 
-## What it does
+Key facts:
 
 - Ingests payment/subscription webhooks from Stripe, Shopify, and Maxio (formerly Chargify),
-  with signature validation on every webhook.
-- Delivers formatted Slack messages (Block Kit) with action buttons that deep-link back to the
-  originating dashboard (Stripe, Shopify, Maxio).
+  with signature validation on every webhook. Delivers Slack Block Kit messages with action
+  buttons that deep-link back to the originating dashboard.
+- Events covered: new subscriptions, payment success and failure, refunds, upgrades and
+  downgrades, trial start/ending/conversion, cancellations and reactivations, Shopify orders,
+  fulfillment with real carrier status, order-delivered confirmations (UPS, USPS, FedEx, DHL,
+  and other recognized carriers), and new customers.
 - Enriches automatically: company data (logo, industry, size, founding year) and, on Pro and
   Enterprise plans, person data (name, job title, seniority, LinkedIn) from the customer email.
 - Badges customer emails by domain type: education, government, military, healthcare, free
-  provider, or disposable — so teams see at a glance who is paying.
+  provider, or disposable.
+- Detects insights only when the webhook data supports them: lifetime-spend insights (LTV
+  display, VIP, milestones, at-risk) come from Maxio and Shopify payloads — Stripe events
+  carry no lifetime spend, so Stripe alerts never guess at it. First-payment callouts are
+  customer-scoped for Shopify (order count) and subscription-scoped for Stripe (first invoice
+  of a subscription). Upgrades and downgrades include the previous plan; payment retries show
+  the next retry date.
+- Reduces noise: related events are consolidated and deduplicated into a single message.
+- Delivers reliably: failed notification deliveries are queued and retried automatically for
+  up to 6 hours, with duplicate suppression.
+- Secures data end to end: webhook signatures verified on every delivery, integration
+  credentials encrypted at rest (ChaCha20-Poly1305), cached customer details encrypted in
+  Redis.
 - Formats amounts correctly in every currency, including zero-decimal (JPY, KRW) and
   three-decimal (BHD, KWD) currencies.
-- Detects insights: VIP customers ($10k+ lifetime value), at-risk customers (a payment failure
-  from a high-LTV customer), LTV milestones ($1k to $100k), trial started/converted, upgrades
-  and downgrades with the previous plan, payment retries with next retry date, and customer
-  anniversaries. Insights are only shown when the webhook data supports them: lifetime-spend
-  insights (LTV, VIP, milestones) come from Maxio and Shopify payloads; Stripe events carry no
-  lifetime spend, so Stripe alerts never guess at it. First-payment callouts are
-  customer-scoped for Shopify (order count) and subscription-scoped for Stripe (first invoice
-  of a subscription).
-- Secures data end to end: webhook signatures verified on every delivery, integration
-  credentials encrypted at rest (ChaCha20-Poly1305), and cached customer details encrypted
-  in Redis.
-- Reduces noise: related events are consolidated and deduplicated into a single message.
-- Delivers reliably: failed notification deliveries are queued and retried automatically for up
-  to 6 hours, with duplicate suppression so nothing is missed or doubled.
-
-## Events covered
-
-New subscriptions, payment success and failure, refunds, upgrades and downgrades, trial start,
-trial ending, trial conversion, cancellations and reactivations, Shopify orders, fulfillment
-with real carrier status, order-delivered confirmations (UPS, USPS, FedEx, DHL, and other
-recognized carriers), new customers.
-
-## Setup
-
-Sign in with Slack, then connect a provider. Stripe connects via one-click OAuth (Stripe
-Connect creates the webhook endpoint automatically); Shopify connects via OAuth with automatic
-webhook subscription; Maxio uses a pasted webhook secret. First notification typically arrives
-within minutes.
-
-## Pricing
-
-- Free: $0/month — 20 events/month, 1 user, 1 integration
-- Basic: $29/month ($290/year) — 10,000 events/month, 5 users
-- Pro: $99/month ($990/year) — 100,000 events/month, 25 users, person enrichment
-- Enterprise: $299/month ($2,990/year) — 1,000,000 events/month, 100 users, SLA
-- All paid plans include a 14-day trial. Details: https://notipus.com/pricing/
+- Setup: sign in with Slack, then connect a provider. Stripe and Shopify connect with
+  one-click OAuth (webhooks created automatically); Maxio uses a pasted webhook secret. The
+  whole onboarding takes under a minute.
+- Pricing: Free ($0, 20 events/month), Basic ($29/month), Pro ($99/month, adds person
+  enrichment), Enterprise ($299/month, SLA). Paid plans include a 14-day trial.
+- Operated by Viktopia UK Ltd, Bristol, England. Contact: support@notipus.com
 
 ## Pages
 
-- Home: https://notipus.com/
-- Integrations overview: https://notipus.com/integrations/
-- Stripe + Slack: https://notipus.com/integrations/stripe/
-- Shopify + Slack: https://notipus.com/integrations/shopify/
-- Maxio (Chargify) + Slack: https://notipus.com/integrations/maxio/
-- Pricing: https://notipus.com/pricing/
-- FAQ: https://notipus.com/faq/
-- Privacy policy: https://notipus.com/privacy/
+- [Home](https://notipus.com/): Product overview with example enriched Slack alerts and the
+  onboarding screencast
+- [Integrations overview](https://notipus.com/integrations/): What each provider integration
+  covers, with a 44-second setup video
+- [Stripe + Slack](https://notipus.com/integrations/stripe/): Stripe events, one-click OAuth
+  setup, and what each event becomes in Slack
+- [Shopify + Slack](https://notipus.com/integrations/shopify/): Shopify order, customer, and
+  fulfillment events, including carrier-confirmed delivery alerts
+- [Maxio (Chargify) + Slack](https://notipus.com/integrations/maxio/): Maxio subscription,
+  renewal, and dunning events — the deepest coverage of the three providers
+- [Pricing](https://notipus.com/pricing/): Plans, event limits, and billing details
+- [FAQ](https://notipus.com/faq/): Common questions about events, context, security, and
+  delivery reliability
+- [Privacy policy](https://notipus.com/privacy/): UK GDPR privacy policy
 
 ## Source code
 
-Source-available on GitHub (free to self-host, Docker-based deployment):
-https://github.com/Notipus/Notipus
+- [GitHub repository](https://github.com/Notipus/Notipus): Full source, source-available
+  license, free to self-host with Docker
 
-## Company
+## Optional
 
-A Viktopia Studio project (https://studio.viktopia.io). Operated by Viktopia UK Ltd, Bristol,
-England. Contact: support@notipus.com
+- [Managed service](https://app.notipus.com): Sign in or create an account
+- [Viktopia Studio](https://studio.viktopia.io): The studio behind Notipus
