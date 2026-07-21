@@ -51,7 +51,8 @@ events:
   - event: 'customer.subscription.trial_will_end'
     becomes: 'Trial-ending heads-up before the customer converts or churns'
   - event: 'invoice.payment_succeeded / invoice.paid'
-    becomes: 'Payment received — trial conversions are called out'
+    becomes:
+      'Payment received — the first payment for a subscription and trial conversions are called out'
   - event: 'invoice.payment_failed'
     becomes: 'Failed payment with the decline reason, retry count, and next retry date'
   - event: 'invoice.payment_action_required'
@@ -84,7 +85,7 @@ faq:
     a:
       'Subscription lifecycle (created, updated, deleted, trial ending), invoice payments
       (succeeded, failed, action required), and completed checkouts — see the table above. Upgrades,
-      downgrades, and trial conversions are detected automatically.'
+      downgrades, first subscription payments, and trial conversions are detected automatically.'
   - q: 'Does it handle currencies other than USD?'
     a:
       'Yes. Amounts are converted and formatted per currency’s real minor unit — including

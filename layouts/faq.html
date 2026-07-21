@@ -55,6 +55,11 @@
       </div>
 
       <div>
+        <dt>How is my data secured?</dt>
+        <dd>Every webhook is verified with the provider's signature scheme before it's processed. Your integration credentials are encrypted at rest (ChaCha20-Poly1305), and cached customer details are encrypted too. The full source code is public, so you can verify all of this yourself.</dd>
+      </div>
+
+      <div>
         <dt>What happens if a notification can't be delivered?</dt>
         <dd>Notipus queues it and keeps retrying automatically for up to six hours, and duplicate events are suppressed — a Slack hiccup doesn't mean a missed or doubled alert.</dd>
       </div>

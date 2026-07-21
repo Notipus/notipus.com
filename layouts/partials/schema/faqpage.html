@@ -62,6 +62,14 @@
     },
     {
       "@type": "Question",
+      "name": "How is my data secured?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every webhook is verified with the provider's signature scheme before it's processed. Your integration credentials are encrypted at rest (ChaCha20-Poly1305), and cached customer details are encrypted too. The full source code is public, so you can verify all of this yourself."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What happens if a notification can't be delivered?",
       "acceptedAnswer": {
         "@type": "Answer",

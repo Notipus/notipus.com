@@ -23,7 +23,12 @@
   and downgrades with the previous plan, payment retries with next retry date, and customer
   anniversaries. Insights are only shown when the webhook data supports them: lifetime-spend
   insights (LTV, VIP, milestones) come from Maxio and Shopify payloads; Stripe events carry no
-  lifetime spend, so Stripe alerts never guess at it.
+  lifetime spend, so Stripe alerts never guess at it. First-payment callouts are
+  customer-scoped for Shopify (order count) and subscription-scoped for Stripe (first invoice
+  of a subscription).
+- Secures data end to end: webhook signatures verified on every delivery, integration
+  credentials encrypted at rest (ChaCha20-Poly1305), and cached customer details encrypted
+  in Redis.
 - Reduces noise: related events are consolidated and deduplicated into a single message.
 - Delivers reliably: failed notification deliveries are queued and retried automatically for up
   to 6 hours, with duplicate suppression so nothing is missed or doubled.
