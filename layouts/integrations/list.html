@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="hero">
+  <div class="container-lg py-14 sm:py-20 text-center">
+    <p class="eyebrow">integrations</p>
+    <h1 class="hero-title mt-3">Your billing stack, <span class="highlight">wired to Slack</span></h1>
+    <p class="hero-subtitle mx-auto max-w-2xl">
+      Notipus listens to your payment provider and posts enriched alerts to the channel your
+      team already reads. Pick your stack:
+    </p>
+  </div>
+</div>
+
+<div class="section bg-white">
+  <div class="container-lg">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 reveal">
+      {{- range .Pages.ByWeight }}
+        <a href="{{ .RelPermalink }}" class="integration-card">
+          <img src="{{ .Params.logo | relURL }}" alt="" class="h-8 w-auto" loading="lazy">
+          <h2 class="display-title mt-4 text-xl">{{ .Params.cardTitle }}</h2>
+          <p class="text-ink-soft mt-2 text-sm">{{ .Params.cardText }}</p>
+          <p class="text-primary-600 mt-4 text-sm font-medium">{{ .Params.cardCta }} →</p>
+        </a>
+      {{- end }}
+    </div>
+    <p class="mt-10 text-center text-sm text-gray-500">
+      Discord, Microsoft Teams, and email delivery are on the roadmap — Slack is the delivery
+      channel today.
+    </p>
+  </div>
+</div>
+
+<div class="cta section">
+  <div class="container-md text-center">
+    <h2 class="cta-title">Two minutes from webhook to context</h2>
+    <p class="cta-subtitle">Connect your provider and get your first enriched Slack alert today.</p>
+    <a href="https://app.notipus.com" class="btn-primary mt-8">Get started</a>
+  </div>
+</div>
+{{ end }}

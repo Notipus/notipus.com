@@ -1,17 +1,42 @@
 {{- /* Site footer */ -}}
-<footer class="bg-white">
-  <div class="max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-    <div class="text-center text-gray-500 text-sm sm:text-base">
-      <p>&copy; {{ now.Year }} Notipus. All rights reserved.</p>
-      <p class="mt-2">A <a href="https://studio.viktopia.io" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900">Viktopia Studio</a> project</p>
-      <p class="mt-2">
-        <a href="{{ "/pricing/" | relURL }}" class="text-gray-600 hover:text-gray-900">Pricing</a>
-        <span class="mx-2">·</span>
-        <a href="{{ "/faq/" | relURL }}" class="text-gray-600 hover:text-gray-900">FAQ</a>
-        <span class="mx-2">·</span>
-        <a href="{{ "/privacy/" | relURL }}" class="text-gray-600 hover:text-gray-900">Privacy Policy</a>
-      </p>
-      <p class="mt-2 text-xs sm:text-sm text-gray-400">Proudly built without any TPS reports.</p>
+<footer class="border-t border-orange-100 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="grid grid-cols-2 gap-8 sm:grid-cols-4">
+      <div class="col-span-2 sm:col-span-1">
+        <a href="{{ "/" | relURL }}" class="flex items-center gap-2">
+          <img src="{{ "/images/logo.png" | relURL }}" alt="Notipus Logo" class="h-7 w-auto" width="28" height="26" loading="lazy">
+          <span class="display-title text-lg text-primary-600">Notipus</span>
+        </a>
+        <p class="mt-3 text-sm text-gray-500">Payment notifications for Slack that know your customers.</p>
+      </div>
+      <div>
+        <h3 class="display-title text-sm text-ink">Product</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="{{ "/pricing/" | relURL }}" class="text-gray-600 hover:text-primary-600">Pricing</a></li>
+          <li><a href="{{ "/faq/" | relURL }}" class="text-gray-600 hover:text-primary-600">FAQ</a></li>
+          <li><a href="https://app.notipus.com" class="text-gray-600 hover:text-primary-600">Sign in</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="display-title text-sm text-ink">Integrations</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="{{ "/integrations/stripe/" | relURL }}" class="text-gray-600 hover:text-primary-600">Stripe + Slack</a></li>
+          <li><a href="{{ "/integrations/shopify/" | relURL }}" class="text-gray-600 hover:text-primary-600">Shopify + Slack</a></li>
+          <li><a href="{{ "/integrations/maxio/" | relURL }}" class="text-gray-600 hover:text-primary-600">Maxio (Chargify) + Slack</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="display-title text-sm text-ink">Open source</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="https://github.com/Notipus/Notipus" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600">GitHub</a></li>
+          <li><a href="https://github.com/Notipus/Notipus#self-hosting" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600">Self-hosting</a></li>
+          <li><a href="{{ "/privacy/" | relURL }}" class="text-gray-600 hover:text-primary-600">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-10 border-t border-gray-100 pt-6 text-sm text-gray-500 sm:flex sm:items-center sm:justify-between">
+      <p>&copy; {{ now.Year }} Notipus. A <a href="https://studio.viktopia.io" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600">Viktopia Studio</a> project.</p>
+      <p class="mt-2 sm:mt-0 text-gray-400">Proudly built without any TPS reports.</p>
     </div>
   </div>
 </footer>

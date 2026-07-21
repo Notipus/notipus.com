@@ -24,5 +24,8 @@
   {{- if eq .RelPermalink "/faq/" -}}
     {{- partial "schema/faqpage.html" . -}}
   {{- end -}}
+  {{- if .Params.faq -}}
+    {{- partial "schema/faq-params.html" . -}}
+  {{- end -}}
 </body>
 </html>

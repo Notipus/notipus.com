@@ -9,6 +9,9 @@
 {{- /* Twitter Card Tags */ -}}
 {{- partial "seo/twitter.html" . -}}
 
+{{- /* Display font */ -}}
+<link rel="preload" href="{{ "/fonts/bricolage-grotesque-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+
 {{- /* Favicon */ -}}
 <link rel="icon" type="image/png" href="{{ "/images/logo.png" | relURL }}">
 <link rel="apple-touch-icon" href="{{ "/images/logo.png" | relURL }}">
