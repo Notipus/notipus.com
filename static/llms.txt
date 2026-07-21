@@ -43,6 +43,10 @@ within minutes.
 ## Pages
 
 - Home: https://notipus.com/
+- Integrations overview: https://notipus.com/integrations/
+- Stripe + Slack: https://notipus.com/integrations/stripe/
+- Shopify + Slack: https://notipus.com/integrations/shopify/
+- Maxio (Chargify) + Slack: https://notipus.com/integrations/maxio/
 - Pricing: https://notipus.com/pricing/
 - FAQ: https://notipus.com/faq/
 - Privacy policy: https://notipus.com/privacy/

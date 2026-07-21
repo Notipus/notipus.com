@@ -1,0 +1,107 @@
+{{ define "main" }}
+<!-- Integration hero -->
+<div class="hero overflow-hidden">
+  <div class="container-lg pt-14 pb-16 sm:pt-20 sm:pb-20">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-10">
+      <div class="enter-rise">
+        <p class="eyebrow">{{ .Params.provider | lower }}</p>
+        <h1 class="hero-title mt-3">{{ .Params.heroTitle | safeHTML }}</h1>
+        <p class="hero-subtitle max-w-xl">{{ .Params.heroIntro }}</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href="https://app.notipus.com" class="btn-primary text-lg px-8">{{ .Params.ctaLabel }}</a>
+          <a href="{{ "/pricing/" | relURL }}" class="btn-secondary">View pricing</a>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">{{ .Params.trustLine }}</p>
+      </div>
+      <div class="slack-window enter-rise delay-1" aria-label="Example Slack notification from {{ .Params.provider }}">
+        <div class="slack-window-bar">
+          <span class="slack-channel"># revenue</span>
+          <span class="slack-meta hidden sm:inline">{{ .Params.provider }} alerts, enriched by Notipus</span>
+          <span class="slack-unread">1</span>
+        </div>
+        <div class="enter-card delay-2">
+          {{ partial "slack-card.html" .Params.mock }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Events covered -->
+<div class="section bg-white">
+  <div class="container-md">
+    <div class="text-center">
+      <p class="eyebrow">what-lands-in-slack</p>
+      <h2 class="section-title mt-3">Every {{ .Params.provider }} event, translated</h2>
+      <p class="section-subtitle mx-auto max-w-2xl">{{ .Params.eventsIntro }}</p>
+    </div>
+    <div class="mt-10 overflow-x-auto rounded-xl border border-gray-200 shadow-xs reveal">
+      <table class="event-table">
+        <thead>
+          <tr>
+            <th scope="col">{{ .Params.provider }} event</th>
+            <th scope="col">What your team sees</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{- range .Params.events }}
+            <tr>
+              <td><code class="mono-token">{{ .event }}</code></td>
+              <td>{{ .becomes }}</td>
+            </tr>
+          {{- end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-6 text-center text-sm text-gray-500">
+      Every alert is enriched with company background, contact name and role, lifetime value,
+      and VIP or at-risk flags — and duplicate events are consolidated into one message.
+    </p>
+  </div>
+</div>
+
+<!-- Setup steps -->
+<div class="section bg-linear-to-b from-white to-primary-50">
+  <div class="container-md">
+    <div class="text-center">
+      <p class="eyebrow">setup</p>
+      <h2 class="section-title mt-3">{{ .Params.setupTitle }}</h2>
+    </div>
+    <ol class="step-list mx-auto mt-10 max-w-2xl reveal">
+      {{- range .Params.steps }}
+        <li>
+          <h3 class="display-title text-lg">{{ .title }}</h3>
+          <p class="text-ink-soft mt-1">{{ .text }}</p>
+        </li>
+      {{- end }}
+    </ol>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section bg-white">
+  <div class="container-sm">
+    <div class="text-center">
+      <p class="eyebrow">faq</p>
+      <h2 class="section-title mt-3">Common questions</h2>
+    </div>
+    <dl class="faq mt-10">
+      {{- range .Params.faq }}
+        <div>
+          <dt>{{ .q }}</dt>
+          <dd>{{ .a | markdownify }}</dd>
+        </div>
+      {{- end }}
+    </dl>
+  </div>
+</div>
+
+<!-- CTA band -->
+<div class="cta section">
+  <div class="container-md text-center">
+    <h2 class="cta-title">{{ .Params.ctaTitle }}</h2>
+    <p class="cta-subtitle">Free plan available. Paid plans include a 14-day trial.</p>
+    <a href="https://app.notipus.com" class="btn-primary mt-8">{{ .Params.ctaLabel }}</a>
+  </div>
+</div>
+{{ end }}
