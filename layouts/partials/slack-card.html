@@ -35,7 +35,9 @@
         <p class="text-xs text-gray-500 italic">{{ .companyMeta }}</p>
         <p class="mt-1.5 text-xs text-gray-600">
           {{- with .badge }}<span class="font-bold">{{ . }}</span> • {{ end -}}
-          👤 <span class="text-[#1264a3]">{{ .email }}</span> • 📅 {{ .since }} • 💰 {{ .ltv }} LTV
+          👤 <span class="text-[#1264a3]">{{ .email }}</span>
+          {{- with .since }} • 📅 {{ . }}{{ end -}}
+          {{- with .ltv }} • 💰 {{ . }} LTV{{ end }}
         </p>
       </div>
       {{- with .buttons }}

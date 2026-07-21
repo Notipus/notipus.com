@@ -2,7 +2,7 @@
 title: 'Stripe Slack Notifications — Enriched Payment Alerts'
 description:
   'Get Stripe payment, subscription, and failed-payment notifications in Slack — enriched with
-  customer context, lifetime value, and churn-risk flags. One-click OAuth setup.'
+  company and contact context, decline reasons, and retry schedules. One-click OAuth setup.'
 weight: 1
 provider: 'Stripe'
 logo: '/images/stripe.svg'
@@ -15,8 +15,9 @@ heroTitle:
   'Stripe payment notifications in Slack — <span class="highlight">with customer context</span>'
 heroIntro:
   "Every Stripe subscription, invoice, and failed payment lands in your channel with the customer's
-  company, lifetime value, tenure, and risk flags attached. Connect with one click — Stripe Connect
-  creates the webhook endpoint for you."
+  company and contact attached — plus decline reasons, retry schedules, trial conversions, and
+  upgrade callouts straight from the event. Connect with one click — Stripe Connect creates the
+  webhook endpoint for you."
 ctaLabel: 'Connect Stripe'
 ctaTitle: "If you could go ahead and connect Stripe, that'd be great."
 trustLine: 'One-click OAuth · No webhook secrets to copy · Free plan available'
@@ -26,20 +27,17 @@ eventsIntro:
   readable alert — no raw webhook JSON.'
 mock:
   time: '9:41 AM'
-  headline: '🎉 $2,499.00 from Initech'
-  milestone: '🏆 Crossed $10,000 lifetime value!'
-  meta: '💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••4242'
+  headline: '⬆️ $199.00 from Initech'
+  milestone: '🎉 Upgraded from $99/mo!'
+  meta: '💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••5555'
   details:
     - label: 'Plan'
-      value: 'Enterprise'
+      value: 'Business (was Pro)'
     - label: 'ID'
-      value: 'sub_initech_001'
+      value: 'sub_bolton_789'
   company: 'Initech'
   companyMeta: 'Software development • Founded 1988'
-  badge: '⭐ VIP'
-  email: 'blumbergh@initech.com'
-  since: 'Since Mar 2024'
-  ltv: '$12.5k'
+  email: 'mbolton@initech.com'
   buttons:
     - 'View in Stripe'
     - 'LinkedIn'
@@ -49,11 +47,11 @@ events:
   - event: 'customer.subscription.updated'
     becomes: 'Upgrade or downgrade, including the previous plan and price'
   - event: 'customer.subscription.deleted'
-    becomes: 'Cancellation, flagged with the customer’s lifetime value'
+    becomes: 'Cancellation, with plan and customer details so you can reach out'
   - event: 'customer.subscription.trial_will_end'
     becomes: 'Trial-ending heads-up before the customer converts or churns'
   - event: 'invoice.payment_succeeded / invoice.paid'
-    becomes: 'Payment received — first payments and trial conversions are called out'
+    becomes: 'Payment received — trial conversions are called out'
   - event: 'invoice.payment_failed'
     becomes: 'Failed payment with the decline reason, retry count, and next retry date'
   - event: 'invoice.payment_action_required'
@@ -69,15 +67,15 @@ steps:
       account automatically — nothing to copy or paste.'
   - title: 'Get your first alert'
     text:
-      'The next Stripe event posts to your channel, enriched with company background, lifetime
-      value, and risk flags.'
+      'The next Stripe event posts to your channel, enriched with company background and contact
+      details.'
 faq:
   - q: 'How is this different from Stripe’s official Slack app?'
     a:
       'Stripe’s app posts the event. Notipus posts the event plus who the customer is: company
-      background, contact name and role, lifetime value, tenure, VIP and at-risk flags, and
-      milestone callouts like trial conversions. Related events are also consolidated into one
-      message instead of several.'
+      background, contact name and role, email domain badges, and callouts for trial conversions and
+      plan changes with the previous plan. Related events are also consolidated into one message
+      instead of several.'
   - q: 'Do I need to configure webhooks in the Stripe dashboard?'
     a:
       'No. When you connect via Stripe Connect OAuth, Notipus creates the webhook endpoint for you
@@ -86,7 +84,7 @@ faq:
     a:
       'Subscription lifecycle (created, updated, deleted, trial ending), invoice payments
       (succeeded, failed, action required), and completed checkouts — see the table above. Upgrades,
-      downgrades, first payments, and trial conversions are detected automatically.'
+      downgrades, and trial conversions are detected automatically.'
   - q: 'Does it handle currencies other than USD?'
     a:
       'Yes. Amounts are converted and formatted per currency’s real minor unit — including

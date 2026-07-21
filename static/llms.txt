@@ -18,10 +18,15 @@
   provider, or disposable — so teams see at a glance who is paying.
 - Formats amounts correctly in every currency, including zero-decimal (JPY, KRW) and
   three-decimal (BHD, KWD) currencies.
-- Detects insights: VIP customers ($10k+ lifetime value), at-risk customers (high LTV plus
-  payment failures), LTV milestones ($1k to $100k), trial started/converted, upgrades and
-  downgrades with previous plan, payment retries with next retry date, customer anniversaries.
+- Detects insights: VIP customers ($10k+ lifetime value), at-risk customers (a payment failure
+  from a high-LTV customer), LTV milestones ($1k to $100k), trial started/converted, upgrades
+  and downgrades with the previous plan, payment retries with next retry date, and customer
+  anniversaries. Insights are only shown when the webhook data supports them: lifetime-spend
+  insights (LTV, VIP, milestones) come from Maxio and Shopify payloads; Stripe events carry no
+  lifetime spend, so Stripe alerts never guess at it.
 - Reduces noise: related events are consolidated and deduplicated into a single message.
+- Delivers reliably: failed notification deliveries are queued and retried automatically for up
+  to 6 hours, with duplicate suppression so nothing is missed or doubled.
 
 ## Events covered
 

@@ -62,6 +62,14 @@
     },
     {
       "@type": "Question",
+      "name": "What happens if a notification can't be delivered?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notipus queues it and keeps retrying automatically for up to six hours, and duplicate events are suppressed — a Slack hiccup doesn't mean a missed or doubled alert."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What counts as an event?",
       "acceptedAnswer": {
         "@type": "Answer",
