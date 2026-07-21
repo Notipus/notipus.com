@@ -30,37 +30,7 @@
 </div>
 
 <!-- Setup screencast -->
-<div class="section bg-linear-to-b from-white to-primary-50">
-  <div class="container-lg">
-    <div class="text-center">
-      <p class="eyebrow">setup</p>
-      <h2 class="section-title mt-3">Watch the setup — 44 seconds, start to finish</h2>
-      <p class="section-subtitle mx-auto max-w-2xl">
-        Sign in with Slack, connect a provider, pick a channel. This is the whole onboarding,
-        unedited.
-      </p>
-    </div>
-    {{- $poster := "" -}}
-    {{- with resources.Get "images/screenshots/onboarding-poster.png" -}}
-      {{- $poster = (.Process "resize 1600x webp q85").RelPermalink -}}
-    {{- end }}
-    <div class="shot-frame mx-auto mt-10 max-w-4xl reveal">
-      <video
-        controls
-        preload="metadata"
-        playsinline
-        width="1920"
-        height="1080"
-        {{ with $poster }}poster="{{ . }}"{{ end }}
-        class="w-full"
-      >
-        <source src="{{ "/videos/onboarding.webm" | relURL }}" type="video/webm" />
-        Your browser doesn't support embedded video —
-        <a href="{{ "/videos/onboarding.webm" | relURL }}">download the screencast</a> instead.
-      </video>
-    </div>
-  </div>
-</div>
+{{ partial "setup-video.html" . }}
 
 <div class="cta section">
   <div class="container-md text-center">
