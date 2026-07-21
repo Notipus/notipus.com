@@ -1,0 +1,20 @@
+{{- /* Responsive product screenshot. Pass a dict: src (assets path), alt.
+  Generates WebP at three widths with a resized PNG fallback. */ -}}
+{{- $img := resources.Get .src -}}
+{{- if $img -}}
+  {{- $w800 := $img.Process "resize 800x webp q85" -}}
+  {{- $w1600 := $img.Process "resize 1600x webp q85" -}}
+  {{- $w2400 := $img.Process "resize 2400x webp q85" -}}
+  {{- $fallback := $img.Process "resize 1600x png" -}}
+  <img
+    src="{{ $fallback.RelPermalink }}"
+    srcset="{{ $w800.RelPermalink }} 800w, {{ $w1600.RelPermalink }} 1600w, {{ $w2400.RelPermalink }} 2400w"
+    sizes="(min-width: 1280px) 1152px, 92vw"
+    width="{{ $fallback.Width }}"
+    height="{{ $fallback.Height }}"
+    alt="{{ .alt }}"
+    loading="lazy"
+    decoding="async"
+    class="w-full"
+  />
+{{- end -}}

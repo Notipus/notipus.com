@@ -233,6 +233,11 @@
   @apply inline-block rounded-sm border border-gray-300 bg-white px-2 py-1 text-[10px] text-gray-700 sm:text-xs;
 }
 
+/* Framed product screenshots and screencasts */
+@utility shot-frame {
+  @apply overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl;
+}
+
 /* Event names and identifiers read as data, not prose */
 @utility mono-token {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;

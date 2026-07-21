@@ -79,6 +79,15 @@
         </li>
       {{- end }}
     </ol>
+    <div class="shot-frame mx-auto mt-12 max-w-4xl reveal">
+      {{ partial "screenshot.html" (dict
+        "src" "images/screenshots/app-integrations.png"
+        "alt" (printf "Notipus integrations screen where you connect %s and Slack" .Params.provider)
+      ) }}
+    </div>
+    <p class="mt-4 text-center text-sm text-gray-500">
+      The integrations screen in Notipus — event sources on the left, Slack on the right.
+    </p>
   </div>
 </div>
 
