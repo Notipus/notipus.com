@@ -5,6 +5,7 @@ description:
   enriched with customer context, lifetime value, and churn-risk flags.'
 weight: 3
 provider: 'Maxio'
+spendInsights: true
 logo: '/images/maxio.svg'
 cardTitle: 'Maxio (Chargify) + Slack'
 cardText:

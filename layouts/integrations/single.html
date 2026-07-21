@@ -54,8 +54,12 @@
       </table>
     </div>
     <p class="mt-6 text-center text-sm text-gray-500">
-      Every alert is enriched with company background, contact name and role, lifetime value,
-      and VIP or at-risk flags — and duplicate events are consolidated into one message.
+      Every alert is enriched with company background, contact name and role, and email domain
+      badges — and duplicate events are consolidated into one message.
+      {{- if .Params.spendInsights }}
+        Because {{ .Params.provider }} sends lifetime spend with its webhooks, alerts also carry
+        lifetime value, VIP status, and at-risk flags.
+      {{- end }}
     </p>
   </div>
 </div>

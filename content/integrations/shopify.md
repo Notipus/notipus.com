@@ -5,6 +5,7 @@ description:
   history and lifetime value. OAuth connect with automatic webhook setup.'
 weight: 2
 provider: 'Shopify'
+spendInsights: true
 logo: '/images/shopify.svg'
 cardTitle: 'Shopify + Slack'
 cardText:
