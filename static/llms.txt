@@ -14,6 +14,10 @@
   originating dashboard (Stripe, Shopify, Maxio).
 - Enriches automatically: company data (logo, industry, size, founding year) and, on Pro and
   Enterprise plans, person data (name, job title, seniority, LinkedIn) from the customer email.
+- Badges customer emails by domain type: education, government, military, healthcare, free
+  provider, or disposable — so teams see at a glance who is paying.
+- Formats amounts correctly in every currency, including zero-decimal (JPY, KRW) and
+  three-decimal (BHD, KWD) currencies.
 - Detects insights: VIP customers ($10k+ lifetime value), at-risk customers (high LTV plus
   payment failures), LTV milestones ($1k to $100k), trial started/converted, upgrades and
   downgrades with previous plan, payment retries with next retry date, customer anniversaries.
@@ -22,8 +26,9 @@
 ## Events covered
 
 New subscriptions, payment success and failure, refunds, upgrades and downgrades, trial start,
-trial ending, trial conversion, cancellations and reactivations, Shopify orders and
-fulfillment, new customers.
+trial ending, trial conversion, cancellations and reactivations, Shopify orders, fulfillment
+with real carrier status, order-delivered confirmations (UPS, USPS, FedEx, DHL, and other
+recognized carriers), new customers.
 
 ## Setup
 

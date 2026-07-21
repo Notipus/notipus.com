@@ -49,7 +49,9 @@ events:
   - event: 'orders/fulfilled'
     becomes: 'Order fulfilled and on its way'
   - event: 'fulfillments/create / fulfillments/update'
-    becomes: 'Fulfillment progress updates'
+    becomes: 'Fulfillment progress with the real carrier status (In Transit, Out for Delivery)'
+  - event: 'shipment_status: delivered'
+    becomes: 'Order delivered — confirmed by the carrier'
   - event: 'customers/create'
     becomes: 'New customer, enriched with company background'
   - event: 'customers/update'
@@ -65,6 +67,11 @@ steps:
     text:
       'The next order posts to your channel with the customer’s history and lifetime value attached.'
 faq:
+  - q: 'Do I get notified when an order is actually delivered?'
+    a:
+      'Yes. When the carrier reports delivery, Notipus posts an "Order delivered" alert. This works
+      for tracking companies Shopify recognizes — UPS, USPS, FedEx, DHL, and others — with no extra
+      setup for already-connected stores.'
   - q: 'How is this different from Shopify’s built-in Slack notifications?'
     a:
       'Notipus adds who the customer is: company background, order history, lifetime value, and

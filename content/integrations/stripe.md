@@ -87,6 +87,11 @@ faq:
       'Subscription lifecycle (created, updated, deleted, trial ending), invoice payments
       (succeeded, failed, action required), and completed checkouts — see the table above. Upgrades,
       downgrades, first payments, and trial conversions are detected automatically.'
+  - q: 'Does it handle currencies other than USD?'
+    a:
+      'Yes. Amounts are converted and formatted per currency’s real minor unit — including
+      zero-decimal currencies like JPY and KRW and three-decimal currencies like BHD and KWD — so
+      ¥5,000 never shows up as ¥50.00.'
   - q: 'What does it cost?'
     a:
       'There’s a free plan (20 events/month), and paid plans from $29/month with a 14-day trial. See
