@@ -16,6 +16,8 @@
   window.gtag = gtag;
 
   gtag('js', new Date());
+  // Keep the session when visitors continue to the app
+  gtag('set', 'linker', { domains: ['app.notipus.com'] });
   gtag('config', '{{ . }}');
 })();
 
@@ -25,6 +27,39 @@ function trackEvent(eventName, eventParams) {
     window.gtag('event', eventName, eventParams);
   }
 }
+
+// Key-event tracking via delegation: every signup, GitHub, and contact
+// click is attributed to the page area it came from.
+document.addEventListener(
+  'click',
+  function (e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+
+    let area = 'body';
+    if (link.closest('nav')) area = 'header';
+    else if (link.closest('footer')) area = 'footer';
+    else if (link.closest('.cta')) area = 'cta_band';
+    else if (link.closest('.hero')) area = 'hero';
+
+    const href = link.getAttribute('href') || '';
+    const params = {
+      link_area: area,
+      link_text: (link.textContent || '').trim().slice(0, 50),
+    };
+
+    if (href.indexOf('app.notipus.com') !== -1) {
+      if (link.dataset.plan) params.plan = link.dataset.plan;
+      trackEvent('signup_click', params);
+    } else if (href.indexOf('github.com/Notipus') !== -1) {
+      params.target = href.indexOf('self-hosting') !== -1 ? 'self_hosting' : 'repo';
+      trackEvent('github_click', params);
+    } else if (href.indexOf('mailto:') === 0) {
+      trackEvent('contact_click', params);
+    }
+  },
+  true
+);
 </script>
 {{- end -}}
 {{- end -}}

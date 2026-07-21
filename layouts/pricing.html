@@ -67,7 +67,7 @@
           </ul>
         </div>
         
-        <a href="https://app.notipus.com" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+        <a href="https://app.notipus.com" data-plan="free" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
           Get Started Free
         </a>
       </div>
@@ -117,7 +117,7 @@
           </ul>
         </div>
         
-        <a href="https://app.notipus.com" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+        <a href="https://app.notipus.com" data-plan="basic" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
           Start 14-Day Trial
         </a>
       </div>
@@ -180,7 +180,7 @@
           </ul>
         </div>
         
-        <a href="https://app.notipus.com" class="mt-8 block w-full rounded-lg bg-[#c55a11] py-3 px-4 text-center text-sm font-semibold text-white shadow-xs hover:bg-[#a3480e] transition-colors">
+        <a href="https://app.notipus.com" data-plan="pro" class="mt-8 block w-full rounded-lg bg-[#c55a11] py-3 px-4 text-center text-sm font-semibold text-white shadow-xs hover:bg-[#a3480e] transition-colors">
           Start 14-Day Trial
         </a>
       </div>
@@ -248,7 +248,7 @@
           </ul>
         </div>
         
-        <a href="https://app.notipus.com" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+        <a href="https://app.notipus.com" data-plan="enterprise" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
           Contact Sales
         </a>
       </div>
@@ -279,7 +279,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   toggle.addEventListener('click', function() {
     isYearly = !isYearly;
-    
+    toggle.setAttribute('aria-checked', String(isYearly));
+    if (window.trackEvent) {
+      trackEvent('billing_toggle', { cycle: isYearly ? 'yearly' : 'monthly' });
+    }
+
     // Update toggle appearance
     const toggleKnob = toggle.querySelector('span');
     if (isYearly) {
