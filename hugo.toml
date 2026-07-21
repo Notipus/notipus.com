@@ -82,6 +82,10 @@ disableKinds = ["taxonomy", "term"]
 [security]
   [security.funcs]
     getenv = ["^HUGO_", "^CI$"]
+  # Tailwind 4's PostCSS plugin loads the lightningcss native addon, which
+  # Hugo's Node.js permission sandbox (0.161+) blocks by default
+  [security.node.permissions]
+    allowAddons = ["postcss"]
 
 # Module mounts
 [module]

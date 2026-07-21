@@ -1,8 +1,9 @@
-name: Deploy to GitHub Pages
+name: CI and Deploy to GitHub Pages
 
 on:
   push:
     branches: [master]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -10,9 +11,10 @@ permissions:
   pages: write
   id-token: write
 
+# PR runs get their own cancellable group; deploys stay serialized on 'pages'
 concurrency:
-  group: 'pages'
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('ci-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -49,14 +51,17 @@ jobs:
         run: hugo --minify
 
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
 
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: 'public'
 
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
