@@ -73,11 +73,12 @@ faq:
       'Yes. When the carrier reports delivery, Notipus posts an "Order delivered" alert. This works
       for tracking companies Shopify recognizes — UPS, USPS, FedEx, DHL, and others — with no extra
       setup for already-connected stores.'
-  - q: 'How is this different from Shopify’s built-in Slack notifications?'
+  - q: 'How is this different from Shopify Flow’s FlowBot Slack messages?'
     a:
-      'Notipus adds who the customer is: company background, order history, lifetime value, and
-      milestone callouts for repeat buyers — and consolidates related events so one order doesn’t
-      ping the channel five times.'
+      'FlowBot posts plain-text messages from workflows you build and template yourself in Shopify
+      Flow. Notipus works out of the box and adds who the customer is: company background, order
+      history, lifetime value, and milestone callouts for repeat buyers. It also consolidates
+      related events so one order doesn’t ping the channel five times.'
   - q: 'Do I need to set up webhooks in the Shopify admin?'
     a:
       'No. Connecting via OAuth subscribes Notipus to the right webhook topics automatically, and
