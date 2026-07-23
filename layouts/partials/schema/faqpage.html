@@ -17,7 +17,7 @@
       "name": "What will my team actually find out about?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "New paying customers, upgrades and downgrades, failed payments and cancellations, and milestones like $10k lifetime value or a 1-year anniversary."
+        "text": "New paying customers, upgrades and downgrades, failed payments and cancellations, and milestones like $10k lifetime value or a 1-year anniversary. Milestone alerts currently fire for Shopify and Maxio, since Stripe payloads don't carry lifetime-spend data."
       }
     },
     {
@@ -33,7 +33,7 @@
       "name": "What context comes with each notification?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Who the company is, how big they are, how long they've been a customer, what they've paid over time, and (optionally) the person's name and role. Customer emails are also badged by domain type — education, government, military, healthcare, free, or disposable — so you can see at a glance who's paying."
+        "text": "Who the company is, how long they've been a customer, what they've paid over time, and (optionally) the person's name and role. Customer emails are also badged by domain type — education, government, military, healthcare, free, or disposable — so you can see at a glance who's paying."
       }
     },
     {
@@ -41,7 +41,7 @@
       "name": "What billing tools does it work with?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Stripe, Shopify, and Maxio (formerly Chargify). Stripe and Shopify connect with one-click OAuth — no webhook secrets to copy."
+        "text": "Stripe, Shopify, and Maxio (formerly Chargify). Shopify connects with one-click OAuth; Stripe and Maxio take a couple of minutes with a webhook secret from your billing dashboard."
       }
     },
     {
@@ -97,7 +97,7 @@
       "name": "Can I change plans anytime?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll be prorated for the remainder of your billing period. When downgrading, the new rate takes effect at your next billing date."
+        "text": "Yes! You can upgrade or downgrade your plan at any time. When upgrading, Stripe prorates your charges automatically. When downgrading, the new rate takes effect at your next billing date."
       }
     },
     {
@@ -105,7 +105,7 @@
       "name": "What happens if I exceed my event limit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We'll notify you when you're approaching your limit. If you exceed it, notifications will continue but we'll reach out to discuss upgrading. We never cut you off without warning."
+        "text": "We email your workspace admins when you've used 80% of your monthly events. If you go over your limit, notifications keep flowing: you'll get an email saying so, with options for a plan that fits your volume. Delivery only pauses if usage reaches double your plan's limit before the monthly reset, and never before you've been warned twice by email."
       }
     }
   ]
