@@ -2,25 +2,25 @@
 title: 'Stripe Slack Notifications — Enriched Payment Alerts'
 description:
   'Get Stripe payment, subscription, and failed-payment notifications in Slack — enriched with
-  company and contact context, decline reasons, and retry schedules. One-click OAuth setup.'
+  company and contact context, decline reasons, and retry schedules. Set up in minutes.'
 weight: 1
 provider: 'Stripe'
 logo: '/images/stripe.svg'
 cardTitle: 'Stripe + Slack'
 cardText:
-  'Subscriptions, invoices, failed payments, and trials — with one-click OAuth that creates the
-  webhook endpoint for you.'
+  'Subscriptions, invoices, failed payments, and trials: point a Stripe webhook at Notipus and paste
+  the signing secret.'
 cardCta: 'See Stripe events'
 heroTitle:
   'Stripe payment notifications in Slack — <span class="highlight">with customer context</span>'
 heroIntro:
   "Every Stripe subscription, invoice, and failed payment lands in your channel with the customer's
   company and contact attached — plus decline reasons, retry schedules, trial conversions, and
-  upgrade callouts straight from the event. Connect with one click — Stripe Connect creates the
-  webhook endpoint for you."
+  upgrade callouts straight from the event. Setup takes a couple of minutes: add a webhook endpoint
+  in the Stripe Dashboard and paste the signing secret into Notipus."
 ctaLabel: 'Connect Stripe'
 ctaTitle: "If you could go ahead and connect Stripe, that'd be great."
-trustLine: 'One-click OAuth · No webhook secrets to copy · Free plan available'
+trustLine: 'Signature-verified webhooks · Setup in about two minutes · Free plan available'
 setupTitle: 'Connected in three steps'
 eventsIntro:
   'Notipus subscribes to the Stripe events that matter for revenue and turns each one into a
@@ -62,10 +62,11 @@ events:
 steps:
   - title: 'Sign in with Slack'
     text: 'One click with your Slack account. Pick the channel your alerts should land in.'
-  - title: 'Connect Stripe'
+  - title: 'Add the webhook in Stripe'
     text:
-      'Approve the Stripe Connect prompt. Notipus creates the webhook endpoint in your Stripe
-      account automatically — nothing to copy or paste.'
+      'Create a webhook endpoint in the Stripe Dashboard pointing at your Notipus URL, then paste
+      the signing secret back into Notipus. If someone else manages Stripe, Notipus can email them
+      the instructions.'
   - title: 'Get your first alert'
     text:
       'The next Stripe event posts to your channel, enriched with company background and contact
@@ -79,8 +80,9 @@ faq:
       instead of several.'
   - q: 'Do I need to configure webhooks in the Stripe dashboard?'
     a:
-      'No. When you connect via Stripe Connect OAuth, Notipus creates the webhook endpoint for you
-      and validates every delivery with Stripe’s official signature scheme.'
+      'Yes, once: create a webhook endpoint pointing at your Notipus URL, select the events, and
+      paste the signing secret into Notipus. Every delivery is then validated with Stripe’s official
+      signature scheme.'
   - q: 'Which Stripe events are supported?'
     a:
       'Subscription lifecycle (created, updated, deleted, trial ending), invoice payments

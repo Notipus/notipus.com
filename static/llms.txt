@@ -33,9 +33,9 @@ Key facts:
   Redis.
 - Formats amounts correctly in every currency, including zero-decimal (JPY, KRW) and
   three-decimal (BHD, KWD) currencies.
-- Setup: sign in with Slack, then connect a provider. Stripe and Shopify connect with
-  one-click OAuth (webhooks created automatically); Maxio uses a pasted webhook secret. The
-  whole onboarding takes under a minute.
+- Setup: sign in with Slack, then connect a provider. Shopify connects with one-click OAuth
+  (webhooks created automatically); Stripe and Maxio use a webhook endpoint added in their
+  dashboard plus a pasted secret. Onboarding takes a few minutes.
 - Pricing: Free ($0, 20 events/month), Basic ($29/month), Pro ($99/month, adds person
   enrichment), Enterprise ($299/month, SLA). Paid plans include a 14-day trial.
 - Operated by Viktopia UK Ltd, Bristol, England. Contact: support@notipus.com
@@ -46,8 +46,8 @@ Key facts:
   onboarding screencast
 - [Integrations overview](https://notipus.com/integrations/): What each provider integration
   covers, with a 44-second setup video
-- [Stripe + Slack](https://notipus.com/integrations/stripe/): Stripe events, one-click OAuth
-  setup, and what each event becomes in Slack
+- [Stripe + Slack](https://notipus.com/integrations/stripe/): Stripe events, webhook setup,
+  and what each event becomes in Slack
 - [Shopify + Slack](https://notipus.com/integrations/shopify/): Shopify order, customer, and
   fulfillment events, including carrier-confirmed delivery alerts
 - [Maxio (Chargify) + Slack](https://notipus.com/integrations/maxio/): Maxio subscription,
