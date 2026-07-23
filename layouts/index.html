@@ -14,7 +14,7 @@
           first alert in minutes.
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a href="https://app.notipus.com" class="btn-primary text-lg px-8">Get started</a>
+          <a href="https://app.notipus.com" class="btn-primary text-lg px-8">Get your first alert free</a>
           <a href="{{ "/integrations/" | relURL }}" class="btn-secondary">See integrations</a>
         </div>
         <p class="mt-4 text-sm text-gray-500">Free plan · 14-day trial on paid plans · Self-hostable</p>
@@ -24,49 +24,99 @@
         <div class="slack-window-bar">
           <span class="slack-channel"># revenue</span>
           <span class="slack-meta hidden sm:inline">Payment alerts, enriched by Notipus</span>
-          <span class="slack-unread">3</span>
+          <span class="slack-unread" id="slack-unread-count">3</span>
         </div>
-        <div class="enter-card delay-2">
-          {{ partial "slack-card.html" (dict
-            "time" "9:41 AM"
-            "headline" "✅ $499.00 from Initrode"
-            "milestone" "🏆 Crossed $10,000 lifetime value!"
-            "meta" "💳 Maxio • 🔄 Renewal (Annual) • Amex ••••1007"
-            "details" (slice (dict "label" "Plan" "value" "Business"))
-            "company" "Initrode"
-            "companyMeta" "Industrial software • Founded 1979"
-            "badge" "⭐ VIP"
-            "email" "snagheenanajar@initrode.com"
-            "since" "Since Aug 2023"
-            "ltv" "$11.2k"
-            "buttons" (slice "View in Maxio" "LinkedIn")
-          ) }}
+        <div class="slack-filter-row" role="group" aria-label="Filter example alerts by source">
+          <button type="button" class="slack-filter" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="slack-filter" data-filter="stripe" aria-pressed="false">Stripe</button>
+          <button type="button" class="slack-filter" data-filter="shopify" aria-pressed="false">Shopify</button>
+          <button type="button" class="slack-filter" data-filter="maxio" aria-pressed="false">Maxio</button>
         </div>
-        <div class="enter-card delay-3">
-          {{ partial "slack-card.html" (dict
-            "time" "9:42 AM"
-            "headline" "❌ $99.00 from Initech"
-            "meta" "💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••9012"
-            "details" (slice (dict "label" "Plan" "value" "Pro") (dict "label" "Failed" "value" "Card declined") (dict "label" "Retry" "value" "2 of 4 • next in 3 days"))
-            "company" "Initech"
-            "companyMeta" "Software development • Founded 1988"
-            "email" "mwaddams@initech.com"
-            "buttons" (slice "View in Stripe" "Contact Customer")
-          ) }}
-        </div>
-        <div class="enter-card delay-4">
-          {{ partial "slack-card.html" (dict
-            "time" "9:44 AM"
-            "headline" "📦 Order #1042 delivered"
-            "milestone" "🚚 Confirmed by the carrier"
-            "meta" "🛒 Shopify • UPS • 3 items"
-            "company" "Chotchkie’s"
-            "companyMeta" "Restaurant & retail • Founded 1991"
-            "email" "joanna@chotchkies.com"
-            "since" "Since Jun 2025"
-            "ltv" "$1.9k"
-            "buttons" (slice "View in Shopify" "LinkedIn")
-          ) }}
+        <div id="slack-card-stack">
+          <div class="enter-card delay-2" data-source="stripe" hidden>
+            {{ partial "slack-card.html" (dict
+              "time" "9:39 AM"
+              "headline" "✅ $49.00 from Flingers"
+              "milestone" "🎉 First subscription"
+              "meta" "💳 Stripe • 🆕 New subscription (Monthly) • Visa ••••4242"
+              "details" (slice (dict "label" "Plan" "value" "Starter"))
+              "company" "Flingers"
+              "companyMeta" "Casual dining • Founded 1994"
+              "email" "brian@flingers.com"
+              "buttons" (slice "View in Stripe" "LinkedIn")
+            ) }}
+          </div>
+          <div class="enter-card delay-2" data-source="maxio" data-default>
+            {{ partial "slack-card.html" (dict
+              "time" "9:41 AM"
+              "headline" "✅ $499.00 from Initrode"
+              "milestone" "🏆 Crossed $10,000 lifetime value!"
+              "meta" "💳 Maxio • 🔄 Renewal (Annual) • Amex ••••1007"
+              "details" (slice (dict "label" "Plan" "value" "Business"))
+              "company" "Initrode"
+              "companyMeta" "Industrial software • Founded 1979"
+              "badge" "⭐ VIP"
+              "email" "snagheenanajar@initrode.com"
+              "since" "Since Aug 2023"
+              "ltv" "$11.2k"
+              "buttons" (slice "View in Maxio" "LinkedIn")
+            ) }}
+          </div>
+          <div class="enter-card delay-3" data-source="stripe" data-default>
+            {{ partial "slack-card.html" (dict
+              "time" "9:42 AM"
+              "headline" "❌ $99.00 from Initech"
+              "meta" "💳 Stripe • 🔄 Recurring (Monthly) • Visa ••••9012"
+              "details" (slice (dict "label" "Plan" "value" "Pro") (dict "label" "Failed" "value" "Card declined") (dict "label" "Retry" "value" "2 of 4 • next in 3 days"))
+              "company" "Initech"
+              "companyMeta" "Software development • Founded 1988"
+              "email" "mwaddams@initech.com"
+              "buttons" (slice "View in Stripe" "Contact Customer")
+            ) }}
+          </div>
+          <div class="enter-card delay-3" data-source="maxio" hidden>
+            {{ partial "slack-card.html" (dict
+              "time" "9:43 AM"
+              "headline" "🎉 $199.00 from Intertrode"
+              "milestone" "🚀 Trial converted to paid"
+              "meta" "💳 Maxio • 🎯 Trial conversion (Monthly) • Mastercard ••••4455"
+              "details" (slice (dict "label" "Plan" "value" "Business"))
+              "company" "Intertrode"
+              "companyMeta" "IT consulting • Founded 1996"
+              "email" "tom@intertrode.com"
+              "since" "Since Jul 2026"
+              "ltv" "$199"
+              "buttons" (slice "View in Maxio" "LinkedIn")
+            ) }}
+          </div>
+          <div class="enter-card delay-4" data-source="shopify" data-default>
+            {{ partial "slack-card.html" (dict
+              "time" "9:44 AM"
+              "headline" "📦 Order #1042 delivered"
+              "milestone" "🚚 Confirmed by the carrier"
+              "meta" "🛒 Shopify • UPS • 3 items"
+              "company" "Chotchkie’s"
+              "companyMeta" "Restaurant & retail • Founded 1991"
+              "email" "joanna@chotchkies.com"
+              "since" "Since Jun 2025"
+              "ltv" "$1.9k"
+              "buttons" (slice "View in Shopify" "LinkedIn")
+            ) }}
+          </div>
+          <div class="enter-card delay-5" data-source="shopify" hidden>
+            {{ partial "slack-card.html" (dict
+              "time" "9:47 AM"
+              "headline" "🛒 $184.50 from Chotchkie’s"
+              "milestone" "🔁 Repeat order (#1058)"
+              "meta" "🛒 Shopify • 5 items • Standard shipping"
+              "company" "Chotchkie’s"
+              "companyMeta" "Restaurant & retail • Founded 1991"
+              "email" "joanna@chotchkies.com"
+              "since" "Since Jun 2025"
+              "ltv" "$2.1k"
+              "buttons" (slice "View in Shopify" "LinkedIn")
+            ) }}
+          </div>
         </div>
       </div>
     </div>
@@ -118,7 +168,7 @@
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"/></svg>
         </div>
         <h3 class="display-title text-lg">Every event, in seconds</h3>
-        <p class="mt-2 text-sm sm:text-base text-ink-soft">New subscriptions, upgrades, downgrades, failed payments, trial conversions, cancellations, refunds — from webhook to Slack in seconds.</p>
+        <p class="mt-2 text-sm sm:text-base text-ink-soft">New subscriptions, upgrades, downgrades, failed payments, trial conversions, cancellations, refunds — from webhook to Slack in seconds. The failed renewal you catch today is a customer you can still save.</p>
       </div>
       <div class="feature-card">
         <div class="icon-chip">
@@ -200,8 +250,45 @@
 <div class="cta section">
   <div class="container-md text-center">
     <h2 class="cta-title">If you could go ahead and connect Stripe, that'd be great.</h2>
-    <p class="cta-subtitle">Set up in minutes, notified in seconds — first enriched Slack alert today.</p>
-    <a href="https://app.notipus.com" class="btn-primary mt-8">Get started</a>
+    <p class="cta-subtitle">Every failed payment you miss is a customer quietly walking out the door. Set up in minutes and catch the next one.</p>
+    <a href="https://app.notipus.com" class="btn-primary mt-8">Get your first alert free</a>
   </div>
 </div>
+
+<script>
+// Hero Slack window: filter example alerts by source
+document.addEventListener('DOMContentLoaded', function() {
+  const filters = document.querySelectorAll('.slack-filter');
+  const cards = document.querySelectorAll('#slack-card-stack > [data-source]');
+  const unread = document.getElementById('slack-unread-count');
+  if (!filters.length || !cards.length) return;
+
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const filter = btn.dataset.filter;
+      filters.forEach(function(b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      if (window.trackEvent) {
+        trackEvent('hero_filter', { source: filter });
+      }
+
+      let visible = 0;
+      cards.forEach(function(card) {
+        // After first interaction, page-load entrance classes give way to the swap animation
+        card.classList.remove('enter-card', 'delay-2', 'delay-3', 'delay-4', 'delay-5', 'card-swap');
+        const show = filter === 'all' ? card.hasAttribute('data-default') : card.dataset.source === filter;
+        card.hidden = !show;
+        if (show) {
+          card.style.animationDelay = (visible * 0.08) + 's';
+          void card.offsetWidth;
+          card.classList.add('card-swap');
+          visible++;
+        }
+      });
+      if (unread) unread.textContent = String(visible);
+    });
+  });
+});
+</script>
 {{ end }}
