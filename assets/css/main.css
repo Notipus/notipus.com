@@ -233,6 +233,25 @@
   @apply inline-block rounded-sm border border-gray-300 bg-white px-2 py-1 text-[10px] text-gray-700 sm:text-xs;
 }
 
+/* Source filter pills inside the window chrome, styled like Slack's own filters */
+@utility slack-filter-row {
+  @apply flex items-center gap-1.5 overflow-x-auto border-b border-gray-100 bg-white px-3 py-2;
+}
+
+@utility slack-filter {
+  font-family: var(--font-display);
+
+  @apply inline-flex shrink-0 cursor-pointer items-center rounded-full border border-gray-300 bg-white px-3 py-1 text-xs font-semibold text-gray-600 transition-colors;
+
+  &:hover {
+    @apply text-ink border-gray-400;
+  }
+
+  &[aria-pressed='true'] {
+    @apply border-ink bg-ink text-white;
+  }
+}
+
 /* Framed product screenshots and screencasts */
 @utility shot-frame {
   @apply overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl;
@@ -373,6 +392,13 @@
 @utility enter-card {
   @media (prefers-reduced-motion: no-preference) {
     animation: card-arrive 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/* Card re-entry when the hero filter changes */
+@utility card-swap {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: card-arrive 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }
 
