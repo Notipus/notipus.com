@@ -1,0 +1,14 @@
+# Notification destinations Notipus delivers to. Rendered on the integrations
+# index (layouts/integrations/list.html). Icons come from Tabler (our icon kit).
+- name: Slack
+  icon: brand-slack
+  color: '#611f69'
+  text: 'Enriched Block Kit messages with customer context and action buttons, in the channel your team already reads.'
+- name: Telegram
+  icon: brand-telegram
+  color: '#0088cc'
+  text: 'The same enriched alerts delivered to any Telegram chat or channel via a bot.'
+- name: Microsoft Teams
+  icon: brand-teams
+  color: '#6264a7'
+  text: 'Adaptive Cards posted to a Teams channel through a Power Automate Workflows webhook.'

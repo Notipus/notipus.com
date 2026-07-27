@@ -26,5 +26,8 @@
     "stylelint": "^17.14.1",
     "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^4.3.3"
+  },
+  "dependencies": {
+    "@tabler/icons": "^3.45.0"
   }
 }

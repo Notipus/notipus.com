@@ -101,6 +101,11 @@ disableKinds = ["taxonomy", "term"]
   [[module.mounts]]
     source = "layouts"
     target = "layouts"
+  # Tabler Icons (our icon kit, installed via bun) mounted so brand SVGs can
+  # be inlined at build time with resources.Get.
+  [[module.mounts]]
+    source = "node_modules/@tabler/icons/icons/outline"
+    target = "assets/tabler"
 
 # Server configuration for development
 [server]

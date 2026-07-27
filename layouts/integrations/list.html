@@ -2,30 +2,59 @@
 <div class="hero">
   <div class="container-lg py-14 sm:py-20 text-center">
     <p class="eyebrow">integrations</p>
-    <h1 class="hero-title mt-3">Your billing stack, <span class="highlight">wired to Slack</span></h1>
+    <h1 class="hero-title mt-3">Your billing stack, <span class="highlight">wired to your team's chat</span></h1>
     <p class="hero-subtitle mx-auto max-w-2xl">
-      Notipus listens to your payment provider and posts enriched alerts to the channel your
-      team already reads. Pick your stack:
+      Notipus listens to your payment provider and posts enriched alerts to Slack, Telegram, or
+      Microsoft Teams — wherever your team already works.
     </p>
   </div>
 </div>
 
 <div class="section bg-white">
   <div class="container-lg">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 reveal">
+    <!-- Sources -->
+    <div class="text-center">
+      <p class="eyebrow">sources</p>
+      <h2 class="display-title mt-2 text-2xl sm:text-3xl">Where your events come from</h2>
+      <p class="text-ink-soft mx-auto mt-3 max-w-2xl">
+        Connect the billing and commerce platforms Notipus understands. Each event is parsed,
+        enriched with customer context, and de-duplicated before it reaches you.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-6 reveal sm:grid-cols-2 lg:grid-cols-3">
       {{- range .Pages.ByWeight }}
         <a href="{{ .RelPermalink }}" class="integration-card">
-          <img src="{{ .Params.logo | relURL }}" alt="" class="h-8 w-auto" loading="lazy">
-          <h2 class="display-title mt-4 text-xl">{{ .Params.cardTitle }}</h2>
+          <img src="{{ .Params.logo | relURL }}" alt="" class="h-8 w-auto" loading="lazy" />
+          <h3 class="display-title mt-4 text-xl">{{ .Params.cardTitle }}</h3>
           <p class="text-ink-soft mt-2 text-sm">{{ .Params.cardText }}</p>
           <p class="text-primary-700 mt-4 text-sm font-medium">{{ .Params.cardCta }} →</p>
         </a>
       {{- end }}
     </div>
-    <p class="mt-10 text-center text-sm text-gray-500">
-      Discord, Microsoft Teams, and email delivery are on the roadmap — Slack is the delivery
-      channel today.
-    </p>
+
+    <!-- Destinations -->
+    <div class="mt-16 text-center sm:mt-24">
+      <p class="eyebrow">destinations</p>
+      <h2 class="display-title mt-2 text-2xl sm:text-3xl">Where your alerts land</h2>
+      <p class="text-ink-soft mx-auto mt-3 max-w-2xl">
+        The same enriched notification, delivered wherever your team already works. Connect one or
+        all per workspace.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-6 reveal sm:grid-cols-2 lg:grid-cols-3">
+      {{- range site.Data.destinations }}
+        <div class="border-primary-100 rounded-xl border bg-white p-6 shadow-xs">
+          <span
+            class="inline-flex h-11 w-11 items-center justify-center rounded-xl"
+            style="background-color: color-mix(in srgb, {{ .color }} 12%, white); color: {{ .color }}"
+          >
+            {{ partial "tabler.html" .icon }}
+          </span>
+          <h3 class="display-title mt-4 text-xl">{{ .name }}</h3>
+          <p class="text-ink-soft mt-2 text-sm">{{ .text }}</p>
+        </div>
+      {{- end }}
+    </div>
   </div>
 </div>
 
@@ -35,7 +64,7 @@
 <div class="cta section">
   <div class="container-md text-center">
     <h2 class="cta-title">Two minutes from webhook to context</h2>
-    <p class="cta-subtitle">Connect your provider and get your first enriched Slack alert today.</p>
+    <p class="cta-subtitle">Connect your provider and get your first enriched alert today.</p>
     <a href="https://app.notipus.com" class="btn-primary mt-8">Get started</a>
   </div>
 </div>
