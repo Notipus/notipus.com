@@ -10,14 +10,14 @@ to Slack about customer events from various services.
 First, install dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 To run the site locally:
 
 ```bash
 # Start Tailwind CSS build in watch mode
-npm run dev
+bun run dev
 
 # In another terminal, start the server:
 docker-compose up
@@ -27,7 +27,7 @@ For production build:
 
 ```bash
 # Build and minify CSS
-npm run build
+bun run build
 ```
 
 ## Deployment
@@ -37,14 +37,10 @@ deployment process is handled by GitHub Actions and consists of two main jobs:
 
 ### Build Job
 
-1. Sets up Node.js 20
-2. Installs dependencies using `npm ci`
-3. Builds the Tailwind CSS (`npm run build`)
-4. Creates deployment directory with:
-   - HTML files
-   - Built CSS
-   - Images
-   - JavaScript files
+1. Sets up Bun and Hugo (extended)
+2. Installs dependencies using `bun install`
+3. Lints and format-checks (`bun run lint`, `bun run format:check`)
+4. Builds the static site with `hugo --minify`
 
 ### Deploy Job
 
@@ -86,8 +82,9 @@ The site uses Google Analytics 4 for tracking:
 - Google Analytics 4 for tracking
 - Google Apps Script for form handling
 - Docker for local development
+- Hugo (extended) as the static site generator
+- Bun as the package manager and JS runtime
 - GitHub Actions for CI/CD
-  - Node.js 20
   - GitHub Pages deployment
 
 ## Contributing
