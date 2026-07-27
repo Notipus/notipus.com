@@ -1,0 +1,8 @@
+{{- /* Inline a Tabler Icons SVG (our icon kit, mounted from the @tabler/icons
+       bun dependency). Pass the icon name, e.g. partial "tabler.html" "brand-teams".
+       The SVG uses stroke="currentColor", so color it via the parent's text color. */ -}}
+{{- with resources.Get (printf "tabler/%s.svg" .) -}}
+  {{- .Content | safeHTML -}}
+{{- else -}}
+  {{- errorf "tabler.html: icon %q not found in assets/tabler" . -}}
+{{- end -}}
