@@ -27,5 +27,8 @@
   {{- if .Params.faq -}}
     {{- partial "schema/faq-params.html" . -}}
   {{- end -}}
+  {{- if and (in (slice "guides" "blog") .Section) (eq .Kind "page") -}}
+    {{- partial "schema/article.html" . -}}
+  {{- end -}}
 </body>
 </html>
