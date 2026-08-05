@@ -1,0 +1,37 @@
+{{- /* Shared article body for guides and blog posts */ -}}
+{{- $isGuide := eq .Section "guides" -}}
+<article class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+  <nav class="article-meta mb-6" aria-label="Breadcrumb">
+    <a href="{{ "/" | relURL }}" class="hover:text-primary-600">Home</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ (printf "/%s/" .Section) | relURL }}" class="hover:text-primary-600 capitalize">{{ .Section }}</a>
+  </nav>
+
+  <header class="mb-8">
+    {{- with .Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+    <h1 class="hero-title mt-2 text-4xl">{{ .Title }}</h1>
+    {{- with .Description }}<p class="hero-subtitle mt-3">{{ . }}</p>{{ end }}
+    <p class="article-meta mt-4">
+      {{- $d := cond $isGuide .Lastmod .Date -}}
+      {{- if gt $d.Year 1 -}}
+        {{ if $isGuide }}Last updated {{ end }}{{ $d.Format "January 2, 2006" }}
+        {{- if and (not $isGuide) .Params.author }} · {{ .Params.author }}{{ end -}}
+        {{- if .ReadingTime }} · {{ end -}}
+      {{- end -}}
+      {{- with .ReadingTime }}{{ . }} min read{{ end -}}
+    </p>
+  </header>
+
+  <div class="prose max-w-none">
+    {{ .Content }}
+  </div>
+
+  {{- /* CTA band */ -}}
+  <div class="cta section mt-14 rounded-2xl">
+    <div class="container-sm text-center">
+      <h2 class="cta-title text-2xl">{{ .Params.ctaTitle | default "Skip the code — get these events in Slack" }}</h2>
+      <p class="cta-subtitle">{{ .Params.ctaText | default "Notipus turns Stripe, Shopify, and Maxio webhooks into enriched alerts in Slack, Telegram, and Microsoft Teams — no code to maintain." }}</p>
+      <a href="https://app.notipus.com" class="btn-primary mt-6">Start free</a>
+    </div>
+  </div>
+</article>

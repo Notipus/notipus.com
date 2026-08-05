@@ -1,0 +1,24 @@
+{{- /* Article / TechArticle Schema.org structured data for guides & blog */ -}}
+{{- $type := cond (eq .Section "guides") "TechArticle" "BlogPosting" -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ $type }}",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ (.Description | default .Summary) | jsonify }},
+  "url": "{{ .Permalink }}",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ .Permalink }}" },
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "author": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.schema.organizationName | default "Notipus" }}",
+    "url": "{{ .Site.BaseURL }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.schema.organizationName | default "Notipus" }}",
+    "logo": { "@type": "ImageObject", "url": "{{ "/images/logo.png" | absURL }}" }
+  }
+}
+</script>

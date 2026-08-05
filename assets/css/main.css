@@ -528,3 +528,31 @@
 .prose tbody tr:hover {
   @apply bg-gray-50;
 }
+
+/* Inline code and code blocks inside article prose (guides & blog) */
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  @apply text-ink rounded-sm bg-gray-100 px-1.5 py-0.5 text-[13px];
+}
+
+.prose pre {
+  @apply mb-4 overflow-x-auto rounded-lg border border-gray-200 bg-gray-900 p-4 text-sm;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-gray-100;
+}
+
+.prose blockquote {
+  @apply border-primary-300 text-ink-soft my-6 border-l-4 pl-4 italic;
+}
+
+/* ---------- Article listings (guides & blog) ---------- */
+.article-card {
+  @apply hover:border-primary-300 block rounded-xl border border-gray-200 bg-white p-6 shadow-xs transition hover:shadow-md;
+}
+
+.article-meta {
+  @apply text-sm text-gray-500;
+}

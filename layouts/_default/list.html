@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="section">
+  <div class="container-md">
+    <header class="text-center">
+      {{- with .Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+      <h1 class="section-title mt-3">{{ .Title }}</h1>
+      {{- with .Description }}
+      <p class="section-subtitle mx-auto max-w-2xl">{{ . }}</p>
+      {{- end }}
+    </header>
+
+    {{- with .Content }}
+    <div class="prose mx-auto mt-8 max-w-2xl">{{ . }}</div>
+    {{- end }}
+
+    {{- $pages := .Pages.ByDate.Reverse }}
+    {{- if eq .Section "guides" }}{{ $pages = .Pages.ByTitle }}{{ end }}
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 reveal">
+      {{- range $pages }}
+      <a href="{{ .RelPermalink }}" class="article-card">
+        {{- with .Params.eyebrow }}<p class="eyebrow">{{ . }}</p>{{ end }}
+        <h2 class="display-title mt-2 text-xl text-gray-900">{{ .Title }}</h2>
+        {{- with .Description }}<p class="mt-2 text-gray-600">{{ . }}</p>{{ end }}
+        <p class="article-meta mt-4">
+          {{- if eq .Section "blog" }}{{ .Date.Format "January 2, 2006" }} · {{ end -}}
+          {{ .ReadingTime }} min read →
+        </p>
+      </a>
+      {{- end }}
+    </div>
+  </div>
+</div>
+{{ end }}
