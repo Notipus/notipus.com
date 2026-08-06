@@ -3,20 +3,20 @@ WEBVTT
 00:00.000 --> 00:07.000
 Creating an account with a passkey
 
-00:07.000 --> 00:13.000
-Choosing a plan — free, or a 14-day trial
+00:07.000 --> 00:11.000
+Landing straight in the product on a free workspace
 
-00:13.000 --> 00:19.000
-Naming the Initech workspace
+00:11.000 --> 00:20.000
+Connecting Slack as the notification channel
 
-00:19.000 --> 00:25.000
-Opening the integrations screen
+00:20.000 --> 00:25.000
+Choosing the #billing-alerts channel
 
 00:25.000 --> 00:31.000
-Slack connected as the notification channel
+Connecting Stripe with one click — no webhook setup
 
-00:31.000 --> 00:37.000
-Stripe connected with one click — no webhook setup
+00:31.000 --> 00:36.000
+A dashboard full of activity
 
-00:37.000 --> 00:44.000
+00:36.000 --> 00:39.000
 First alerts arrive in the #billing-alerts channel
