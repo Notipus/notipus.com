@@ -28,6 +28,6 @@
     "tailwindcss": "^4.3.3"
   },
   "dependencies": {
-    "@tabler/icons": "^3.45.0"
+    "@tabler/icons": "^3.46.0"
   }
 }
