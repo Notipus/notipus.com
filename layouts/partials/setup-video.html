@@ -3,9 +3,9 @@
   <div class="container-lg">
     <div class="text-center">
       <p class="eyebrow">setup</p>
-      <h2 class="section-title mt-3">Watch the setup — 44 seconds, start to finish</h2>
+      <h2 class="section-title mt-3">Watch the setup — 39 seconds, start to finish</h2>
       <p class="section-subtitle mx-auto max-w-2xl">
-        Sign in with Slack, connect a provider, pick a channel. This is the whole onboarding,
+        Sign up with a passkey, connect a provider, pick a channel. This is the whole onboarding,
         unedited.
       </p>
     </div>
@@ -23,7 +23,10 @@
         {{ with $poster }}poster="{{ . }}"{{ end }}
         class="w-full"
       >
-        <source src="{{ "/videos/onboarding.webm" | relURL }}" type="video/webm" />
+        {{- /* Hosted as a GitHub Release asset on the (public) app repo so the
+               binary stays out of this repo; captions stay same-origin for CORS. */ -}}
+        {{- $video := "https://github.com/Notipus/Notipus/releases/download/marketing-assets/onboarding.webm" -}}
+        <source src="{{ $video }}" type="video/webm" />
         <track
           kind="captions"
           src="{{ "/videos/onboarding.vtt" | relURL }}"
@@ -32,7 +35,7 @@
           default
         />
         Your browser doesn't support embedded video —
-        <a href="{{ "/videos/onboarding.webm" | relURL }}">download the screencast</a> instead.
+        <a href="{{ $video }}">download the screencast</a> instead.
       </video>
     </div>
   </div>
