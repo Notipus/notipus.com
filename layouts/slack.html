@@ -1,0 +1,342 @@
+{{ define "main" }}
+{{- /* Dedicated landing page for the Notipus Slack app, as required by the
+  Slack Marketplace guidelines: an overview of the app, how it behaves inside
+  Slack, the permissions it requests, install instructions for the button
+  behind our login, and a visible link to the privacy policy. */ -}}
+
+{{- $installUrl := "https://app.notipus.com/integrate/slack/" -}}
+
+<!-- Hero: what this app does in Slack, with a live example beside it -->
+<div class="hero overflow-hidden">
+  <div class="container-lg pt-14 pb-16 sm:pt-20 sm:pb-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-10">
+      <div class="enter-rise">
+        <p class="text-sm font-semibold text-primary-700">Notipus for Slack</p>
+        <h1 class="hero-title mt-3">
+          Payment alerts in Slack that <span class="highlight">know your customers</span>
+        </h1>
+        <p class="hero-subtitle max-w-xl">
+          Notipus watches your Stripe, Shopify, and Maxio (Chargify) accounts and posts every
+          payment, upgrade, failed charge, and cancellation into a Slack channel you choose. Each
+          message arrives with the customer's company, contact, lifetime value, and churn signals
+          already attached, so nobody has to open a billing dashboard to understand what happened.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href="{{ $installUrl }}" aria-label="Add Notipus to Slack">
+            <img
+              alt="Add to Slack"
+              height="40"
+              width="139"
+              src="https://platform.slack-edge.com/img/add_to_slack.png"
+              srcset="
+                https://platform.slack-edge.com/img/add_to_slack.png    1x,
+                https://platform.slack-edge.com/img/add_to_slack@2x.png 2x
+              "
+            />
+          </a>
+          <a href="#install" class="btn-secondary">How to install</a>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">
+          Free plan · Posts to one channel you pick · Never reads your messages
+        </p>
+      </div>
+
+      <div class="slack-window enter-rise delay-1" aria-label="Example Slack notifications from Notipus">
+        <div class="slack-window-bar">
+          <span class="slack-channel"># revenue</span>
+          <span class="slack-meta hidden sm:inline">Payment alerts, enriched by Notipus</span>
+        </div>
+        <div>
+          <div class="enter-card delay-2">
+            {{ partial "slack-card.html" (dict
+              "time" "9:41 AM"
+              "headline" "💰 $4,999.00 from Initrode"
+              "milestone" "📈 3rd successful payment in a row"
+              "meta" "Stripe · TPS Premium · monthly"
+              "company" "Initrode"
+              "companyMeta" "Software · 51-200 employees · founded 2015"
+              "email" "billing@initrode.com"
+              "since" "Since Mar 2024"
+              "ltv" "$18.4k LTV"
+              "buttons" (slice "Stripe Dashboard")
+            ) }}
+          </div>
+          <div class="enter-card delay-3">
+            {{ partial "slack-card.html" (dict
+              "time" "8:41 AM"
+              "headline" "⚠️ Payment failed for Chotchkie's"
+              "milestone" "Card declined · retry scheduled for tomorrow"
+              "meta" "Stripe · Flair Plan · insufficient funds"
+              "company" "Chotchkie's"
+              "companyMeta" "Hospitality · 11-50 employees"
+              "email" "manager@chotchkies.com"
+              "since" "Since Jan 2025"
+              "ltv" "$1.2k LTV"
+              "buttons" (slice "Contact Customer" "Stripe Dashboard")
+            ) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- What you get in Slack -->
+<div class="section bg-white">
+  <div class="container-lg">
+    <div class="text-center">
+      <p class="eyebrow">what it posts</p>
+      <h2 class="section-title mt-3">Every revenue moment, in the channel your team already reads</h2>
+      <p class="section-subtitle mx-auto max-w-2xl">
+        Notipus translates raw webhooks from your payment tools into readable Slack messages. No JSON,
+        no dashboards, no separate inbox to check.
+      </p>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="feature-card">
+        <h3 class="display-title text-lg">New revenue</h3>
+        <p class="text-ink-soft mt-2">
+          New subscriptions, one-off payments, orders, and trial conversions, with the plan and amount
+          spelled out.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="display-title text-lg">Problems worth chasing</h3>
+        <p class="text-ink-soft mt-2">
+          Failed charges with the decline reason and retry schedule, so someone can act before the
+          customer churns.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="display-title text-lg">Churn and expansion</h3>
+        <p class="text-ink-soft mt-2">
+          Cancellations, downgrades, and upgrades, each with how long the customer has been with you
+          and what they were worth.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="display-title text-lg">Customer context</h3>
+        <p class="text-ink-soft mt-2">
+          Company name, industry, size, and the contact behind the email, resolved automatically and
+          attached to the message.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="display-title text-lg">Milestones</h3>
+        <p class="text-ink-soft mt-2">
+          Lifetime-value thresholds and customer anniversaries, called out inline so wins do not go
+          unnoticed.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3 class="display-title text-lg">One message, not five</h3>
+        <p class="text-ink-soft mt-2">
+          Related events for the same customer are consolidated, so a single action does not ping the
+          channel repeatedly.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- How it works inside Slack, including permissions -->
+<div class="section bg-linear-to-b from-white to-primary-50">
+  <div class="container-md">
+    <div class="text-center">
+      <p class="eyebrow">how it works in slack</p>
+      <h2 class="section-title mt-3">What the Slack app actually does</h2>
+    </div>
+
+    <div class="prose prose-gray mx-auto mt-10 max-w-none">
+      <p>
+        When you connect Slack, Notipus asks Slack for permission to post into a single channel that
+        you select during installation. Slack creates an incoming webhook scoped to just that
+        channel, and Notipus uses it to deliver messages as they happen.
+      </p>
+      <p>
+        Notipus posts to Slack. It does not read conversations, it does not join other channels, and
+        it does not message your teammates directly. There are no slash commands and no interactive
+        buttons that send data back to Notipus: the buttons on each message are plain links that open
+        your payment provider's dashboard or an email draft.
+      </p>
+      <p>
+        You can change the destination channel at any time from the Notipus integrations screen, and
+        removing the app from your Slack workspace stops delivery immediately.
+      </p>
+    </div>
+
+    <h3 class="display-title mt-12 text-center text-lg">Permissions we request, and why</h3>
+    <div class="mt-6 overflow-x-auto">
+      <table class="event-table">
+        <thead>
+          <tr>
+            <th>Scope</th>
+            <th>Why Notipus needs it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="mono-token">incoming-webhook</span></td>
+            <td>
+              Creates the webhook for the one channel you choose at install time. This is how every
+              notification is delivered.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="mono-token">chat:write</span></td>
+            <td>Posts the notification messages themselves.</td>
+          </tr>
+          <tr>
+            <td><span class="mono-token">channels:read</span></td>
+            <td>
+              Lists your public channels so you can pick a destination from a dropdown instead of
+              typing a channel ID.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-ink-soft mx-auto mt-4 max-w-2xl text-center text-sm">
+      That is the complete list. Notipus requests no scopes for reading messages, files, or user
+      profiles.
+    </p>
+  </div>
+</div>
+
+<!-- Installation instructions: the button sits behind our login -->
+<div id="install" class="section bg-white">
+  <div class="container-md">
+    <div class="text-center">
+      <p class="eyebrow">installation</p>
+      <h2 class="section-title mt-3">Installing Notipus in Slack</h2>
+      <p class="section-subtitle mx-auto max-w-2xl">
+        Notipus is a multi-tenant service, so the Slack connection attaches to a Notipus workspace.
+        That means you create an account first, then connect Slack from inside the product. It takes
+        a couple of minutes.
+      </p>
+    </div>
+    <ol class="step-list mx-auto mt-10 max-w-2xl reveal">
+      <li>
+        <h3 class="display-title text-lg">Create a free Notipus account</h3>
+        <p class="text-ink-soft mt-1">
+          Go to <a href="https://app.notipus.com" class="underline">app.notipus.com</a> and sign up
+          with a passkey or with your Slack account. A free workspace is created for you
+          automatically, with no card required.
+        </p>
+      </li>
+      <li>
+        <h3 class="display-title text-lg">Open Integrations and choose Slack</h3>
+        <p class="text-ink-soft mt-1">
+          On the Integrations screen, Slack sits under Notification Channels on the right. Press
+          Connect to start the Slack authorisation flow. This is where the Add to Slack button lives
+          once you are signed in.
+        </p>
+      </li>
+      <li>
+        <h3 class="display-title text-lg">Approve the permissions and pick a channel</h3>
+        <p class="text-ink-soft mt-1">
+          Slack shows you the three scopes listed above and asks which channel Notipus may post to.
+          Choose the channel your team watches for revenue, then approve. You must be a Slack
+          workspace admin, or have permission to install apps, to complete this step.
+        </p>
+      </li>
+      <li>
+        <h3 class="display-title text-lg">Connect a payment source</h3>
+        <p class="text-ink-soft mt-1">
+          Back in Notipus, connect Stripe, Shopify, or Maxio (Chargify) from the Event Sources
+          column. Each one is a short webhook setup, and the
+          <a href="{{ "/guides/" | relURL }}" class="underline">guides</a> walk through it step by
+          step. Your first alert lands in Slack as soon as the next payment event fires.
+        </p>
+      </li>
+    </ol>
+
+    <div class="mt-10 text-center">
+      <a href="{{ $installUrl }}" aria-label="Add Notipus to Slack">
+        <img
+          alt="Add to Slack"
+          height="40"
+          width="139"
+          class="inline-block"
+          src="https://platform.slack-edge.com/img/add_to_slack.png"
+          srcset="
+            https://platform.slack-edge.com/img/add_to_slack.png    1x,
+            https://platform.slack-edge.com/img/add_to_slack@2x.png 2x
+          "
+        />
+      </a>
+      <p class="mt-3 text-sm text-gray-500">
+        Signed out? This takes you to the Notipus sign-in page first, then straight into the Slack
+        authorisation screen.
+      </p>
+    </div>
+
+    <div class="shot-frame mx-auto mt-12 max-w-4xl reveal">
+      {{ partial "screenshot.html" (dict
+        "src" "images/screenshots/app-integrations.png"
+        "alt" "The Notipus integrations screen, with payment event sources on the left and Slack under notification channels on the right"
+      ) }}
+    </div>
+    <p class="mt-4 text-center text-sm text-gray-500">
+      The integrations screen in Notipus — event sources on the left, Slack on the right.
+    </p>
+  </div>
+</div>
+
+<!-- Data handling, privacy, support -->
+<div class="section bg-primary-50/60">
+  <div class="container-md">
+    <div class="text-center">
+      <p class="eyebrow">data &amp; privacy</p>
+      <h2 class="section-title mt-3">What Notipus stores, and where to reach us</h2>
+    </div>
+    <div class="prose prose-gray mx-auto mt-10 max-w-none">
+      <p>
+        Notipus receives payment events from the billing tools you connect, enriches them with
+        publicly available company information, and delivers the result to your Slack channel. Slack
+        credentials are stored encrypted and used only to post to the channel you selected. We do not
+        sell data, and we do not use your data to train models.
+      </p>
+      <p>
+        Our <a href="{{ "/privacy/" | relURL }}">privacy policy</a> sets out exactly what we collect,
+        how long we keep it, which subprocessors are involved, and how to request access or deletion.
+        It is written against the UK GDPR and the Data Protection Act 2018.
+      </p>
+      <p>
+        Need help or have a question before installing? Our
+        <a href="{{ "/support/" | relURL }}">support page</a> has the details, or email
+        <a href="mailto:support@notipus.com">support@notipus.com</a> and we reply within two business
+        days.
+      </p>
+    </div>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="{{ "/privacy/" | relURL }}" class="btn-secondary">Privacy policy</a>
+      <a href="{{ "/support/" | relURL }}" class="btn-secondary">Support</a>
+      <a href="{{ "/pricing/" | relURL }}" class="btn-secondary">Pricing</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta section">
+  <div class="container-md text-center">
+    <h2 class="cta-title">If you could go ahead and connect Slack, that'd be great.</h2>
+    <p class="cta-subtitle">Free plan available. Paid plans include a 14-day trial.</p>
+    <div class="mt-8">
+      <a href="{{ $installUrl }}" aria-label="Add Notipus to Slack">
+        <img
+          alt="Add to Slack"
+          height="40"
+          width="139"
+          class="inline-block"
+          src="https://platform.slack-edge.com/img/add_to_slack.png"
+          srcset="
+            https://platform.slack-edge.com/img/add_to_slack.png    1x,
+            https://platform.slack-edge.com/img/add_to_slack@2x.png 2x
+          "
+        />
+      </a>
+    </div>
+  </div>
+</div>
+{{ end }}
