@@ -26,234 +26,61 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-4 lg:gap-6">
       
-      <!-- Free Plan -->
-      <div class="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-xs hover:shadow-md transition-shadow">
-        <div class="flex-1">
-          <h3 class="text-xl font-semibold text-gray-900">Free</h3>
-          <p class="mt-2 text-sm text-gray-500">Perfect for trying things out</p>
-          
-          <p class="mt-6">
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">$0</span>
-            <span class="text-base font-medium text-gray-500">/month</span>
-          </p>
-          
-          <p class="mt-1 text-sm text-gray-500">&nbsp;</p>
-          
-          <ul class="mt-8 space-y-4">
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">20 events/month</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">1 user</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">1 integration</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Basic notifications</span>
-            </li>
-          </ul>
+      {{- $check := `<svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>` -}}
+      {{- range site.Data.plans }}
+        <div class="relative flex flex-col rounded-2xl bg-white p-6 sm:p-8 {{ if .featured }}border-2 border-[#c55a11] shadow-lg{{ else }}border border-gray-200 shadow-xs hover:shadow-md transition-shadow{{ end }}">
+          {{- with .badge }}
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center rounded-full bg-[#c55a11] px-4 py-1 text-sm font-semibold text-white shadow-xs">{{ . }}</span>
+            </div>
+          {{- end }}
+
+          <div class="flex-1">
+            <h3 class="text-xl font-semibold text-gray-900">{{ .name }}</h3>
+            <p class="mt-2 text-sm text-gray-500">{{ .tagline }}</p>
+
+            <p class="mt-6">
+              {{- if .yearlyMonthly }}
+                <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 monthly-price hidden">${{ .monthly }}</span>
+                <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 yearly-price">${{ .yearlyMonthly }}</span>
+              {{- else }}
+                <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">${{ .monthly }}</span>
+              {{- end }}
+              <span class="text-base font-medium text-gray-500">/month</span>
+            </p>
+
+            <p class="mt-1 text-sm text-gray-500">
+              {{- if .yearlyTotal }}
+                <span class="yearly-price">${{ lang.FormatNumberCustom 0 .yearlyTotal }} billed annually. <span class="text-green-700 font-medium">Save ${{ .yearlySaving }}</span></span>
+                <span class="monthly-price hidden">&nbsp;</span>
+              {{- else }}
+                &nbsp;
+              {{- end }}
+            </p>
+
+            {{- with .note }}
+              <p class="mt-3 text-sm font-medium text-primary-700">{{ . }}</p>
+            {{- end }}
+
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-start">
+                {{ $check | safeHTML }}
+                <span class="ml-3 text-sm text-gray-700"><strong>{{ .events }}</strong> events/month</span>
+              </li>
+              {{- range .features }}
+                <li class="flex items-start">
+                  {{ $check | safeHTML }}
+                  <span class="ml-3 text-sm text-gray-700">{{ $.RenderString (dict "display" "inline") . }}</span>
+                </li>
+              {{- end }}
+            </ul>
+          </div>
+
+          <a href="https://app.notipus.com" data-plan="{{ .slug }}" class="mt-8 block w-full rounded-lg py-3 px-4 text-center text-sm font-semibold transition-colors {{ if .featured }}bg-[#c55a11] text-white shadow-xs hover:bg-[#a3480e]{{ else }}border border-gray-300 bg-white text-gray-700 hover:bg-gray-50{{ end }}">
+            {{ .cta }}
+          </a>
         </div>
-        
-        <a href="https://app.notipus.com" data-plan="free" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
-          Start free with 20 events
-        </a>
-      </div>
-
-      <!-- Basic Plan -->
-      <div class="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-xs hover:shadow-md transition-shadow">
-        <div class="flex-1">
-          <h3 class="text-xl font-semibold text-gray-900">Basic</h3>
-          <p class="mt-2 text-sm text-gray-500">For small teams getting started</p>
-          
-          <p class="mt-6">
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 monthly-price hidden">$29</span>
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 yearly-price">$24</span>
-            <span class="text-base font-medium text-gray-500">/month</span>
-          </p>
-
-          <p class="mt-1 text-sm text-gray-500">
-            <span class="yearly-price">$290 billed annually. <span class="text-green-700 font-medium">Save $58</span></span>
-            <span class="monthly-price hidden">&nbsp;</span>
-          </p>
-          
-          <ul class="mt-8 space-y-4">
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700"><strong>10,000</strong> events/month</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Up to <strong>5 users</strong></span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Dashboard analytics</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Email support</span>
-            </li>
-          </ul>
-        </div>
-        
-        <a href="https://app.notipus.com" data-plan="basic" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
-          Start 14-day trial
-        </a>
-      </div>
-
-      <!-- Pro Plan (Featured) -->
-      <div class="relative flex flex-col rounded-2xl border-2 border-[#c55a11] bg-white p-6 sm:p-8 shadow-lg">
-        <!-- Featured badge -->
-        <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span class="inline-flex items-center rounded-full bg-[#c55a11] px-4 py-1 text-sm font-semibold text-white shadow-xs">
-            Most Popular
-          </span>
-        </div>
-        
-        <div class="flex-1">
-          <h3 class="text-xl font-semibold text-gray-900">Pro</h3>
-          <p class="mt-2 text-sm text-gray-500">For growing businesses</p>
-          
-          <p class="mt-6">
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 monthly-price hidden">$99</span>
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 yearly-price">$82</span>
-            <span class="text-base font-medium text-gray-500">/month</span>
-          </p>
-
-          <p class="mt-1 text-sm text-gray-500">
-            <span class="yearly-price">$990 billed annually. <span class="text-green-700 font-medium">Save $198</span></span>
-            <span class="monthly-price hidden">&nbsp;</span>
-          </p>
-
-          <p class="mt-3 text-sm font-medium text-primary-700">Catch one failed $99 renewal and the month pays for itself.</p>
-          
-          <ul class="mt-8 space-y-4">
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700"><strong>100,000</strong> events/month</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Up to <strong>25 users</strong></span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">50 integrations</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Person enrichment (name, role, LinkedIn)</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Priority support</span>
-            </li>
-          </ul>
-        </div>
-        
-        <a href="https://app.notipus.com" data-plan="pro" class="mt-8 block w-full rounded-lg bg-[#c55a11] py-3 px-4 text-center text-sm font-semibold text-white shadow-xs hover:bg-[#a3480e] transition-colors">
-          Start 14-day trial
-        </a>
-      </div>
-
-      <!-- Enterprise Plan -->
-      <div class="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-xs hover:shadow-md transition-shadow">
-        <div class="flex-1">
-          <h3 class="text-xl font-semibold text-gray-900">Enterprise</h3>
-          <p class="mt-2 text-sm text-gray-500">For large-scale operations</p>
-          
-          <p class="mt-6">
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 monthly-price hidden">$299</span>
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 yearly-price">$249</span>
-            <span class="text-base font-medium text-gray-500">/month</span>
-          </p>
-
-          <p class="mt-1 text-sm text-gray-500">
-            <span class="yearly-price">$2,990 billed annually. <span class="text-green-700 font-medium">Save $598</span></span>
-            <span class="monthly-price hidden">&nbsp;</span>
-          </p>
-          
-          <ul class="mt-8 space-y-4">
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700"><strong>1,000,000</strong> events/month</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Up to <strong>100 users</strong></span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">200 integrations</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Custom integrations</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">SLA guarantee</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Dedicated support</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="h-5 w-5 shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-              </svg>
-              <span class="ml-3 text-sm text-gray-700">Slack support</span>
-            </li>
-          </ul>
-        </div>
-        
-        <a href="https://app.notipus.com" data-plan="enterprise" class="mt-8 block w-full rounded-lg border border-gray-300 bg-white py-3 px-4 text-center text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
-          Start 14-day trial
-        </a>
-      </div>
+      {{- end }}
 
     </div>
   </div>
