@@ -1,0 +1,75 @@
+# Single source of truth for plan pricing.
+#
+# Rendered by layouts/pricing.html (full cards, monthly/yearly toggle) and by
+# layouts/slack.html (compact summary table, which the Slack Marketplace
+# requires on the app's landing page). Change a price here and both pages
+# follow; never hardcode a figure in a layout.
+#
+# monthly / yearlyMonthly / yearlyTotal / yearlySaving are USD per the unit in
+# their name. Free omits the yearly fields, which suppresses its billing line.
+# events is a pre-formatted string so thousands separators stay consistent.
+# features holds inline markdown and excludes the events row, which every card
+# derives from `events`.
+
+- name: Free
+  slug: free
+  tagline: Perfect for trying things out
+  monthly: 0
+  events: '20'
+  cta: Start free with 20 events
+  featured: false
+  features:
+    - 1 user
+    - 1 integration
+    - Basic notifications
+
+- name: Basic
+  slug: basic
+  tagline: For small teams getting started
+  monthly: 29
+  yearlyMonthly: 24
+  yearlyTotal: 290
+  yearlySaving: 58
+  events: '10,000'
+  cta: Start 14-day trial
+  featured: false
+  features:
+    - Up to **5 users**
+    - Dashboard analytics
+    - Email support
+
+- name: Pro
+  slug: pro
+  tagline: For growing businesses
+  monthly: 99
+  yearlyMonthly: 82
+  yearlyTotal: 990
+  yearlySaving: 198
+  events: '100,000'
+  note: Catch one failed $99 renewal and the month pays for itself.
+  cta: Start 14-day trial
+  featured: true
+  badge: Most Popular
+  features:
+    - Up to **25 users**
+    - 50 integrations
+    - Person enrichment (name, role, LinkedIn)
+    - Priority support
+
+- name: Enterprise
+  slug: enterprise
+  tagline: For large-scale operations
+  monthly: 299
+  yearlyMonthly: 249
+  yearlyTotal: 2990
+  yearlySaving: 598
+  events: '1,000,000'
+  cta: Start 14-day trial
+  featured: false
+  features:
+    - Up to **100 users**
+    - 200 integrations
+    - Custom integrations
+    - SLA guarantee
+    - Dedicated support
+    - Slack support
