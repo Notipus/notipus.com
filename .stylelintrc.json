@@ -20,6 +20,25 @@
         ]
       }
     ],
+    "at-rule-prelude-no-invalid": [
+      true,
+      {
+        "ignoreAtRules": [
+          "theme",
+          "utility",
+          "plugin",
+          "source",
+          "variant",
+          "custom-variant",
+          "reference",
+          "config",
+          "apply",
+          "layer",
+          "tailwind",
+          "screen"
+        ]
+      }
+    ],
     "function-no-unknown": [
       true,
       {
