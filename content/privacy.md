@@ -3,7 +3,7 @@ title: 'Privacy Policy - Notipus'
 description: 'How Notipus collects, uses, and protects your data. UK GDPR compliant privacy policy.'
 ---
 
-Last updated: January 2026
+Last updated: November 2026
 
 ## Introduction
 
@@ -65,6 +65,7 @@ which may include:
 - Subscription and order details, including lifecycle events
 - Payment method information (card type and last 4 digits only)
 - Order line items and fulfilment status
+- Payment failure reasons and retry schedules
 
 The specific data received depends on which services you connect and how you configure your
 integrations.
@@ -77,16 +78,20 @@ We process your data for the following purposes:
    format
 2. **Data enrichment**: Using customer email domains to retrieve publicly available company
    information (such as logos, industry, and company descriptions) from third-party enrichment
-   services
+   services. If you connect your own Hunter.io account, customer email addresses are sent to
+   Hunter.io to look up the person behind them
 3. **Cross-referencing**: Correlating events from different connected platforms to provide unified
    insights
 4. **Notification formatting**: Transforming data into human-readable notifications
 5. **Notification delivery**: Sending formatted notifications to your configured destinations (such
-   as Slack)
-6. **Account management**: Managing your account, authentication, and workspace settings
-7. **Service improvement**: Analysing usage patterns to improve our service (using aggregated,
+   as Slack, Microsoft Teams, or Telegram)
+6. **Sales statistics**: Producing weekly and monthly summaries of your transactions (revenue, new
+   and existing customers, a breakdown by industry, and failed-payment recovery), shown in the
+   application and, if you turn it on, posted to your notification channels
+7. **Account management**: Managing your account, authentication, and workspace settings
+8. **Service improvement**: Analysing usage patterns to improve our service (using aggregated,
    anonymised data where possible)
-8. **Security and fraud prevention**: Protecting our service and users from malicious activity
+9. **Security and fraud prevention**: Protecting our service and users from malicious activity
 
 ## Legal Bases for Processing
 
@@ -103,12 +108,15 @@ We process personal data under the following legal bases:
 
 We use the following categories of third-party services to operate Notipus:
 
-| Service Type                 | Purpose                                        | Data Shared                                                                   |
-| ---------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------- |
-| **Slack**                    | Authentication (SSO) and notification delivery | User email and profile for login; formatted notification content for delivery |
-| **Brandfetch**               | Company and brand enrichment                   | Domain names only (to retrieve publicly available company information)        |
-| **Sentry**                   | Error monitoring and diagnostics               | Error logs, request context, and IP addresses                                 |
-| **Infrastructure providers** | Hosting and data storage                       | All service data (processed within secure data centres)                       |
+| Service Type                  | Purpose                                          | Data Shared                                                                   |
+| ----------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| **Slack**                     | Authentication (SSO) and notification delivery   | User email and profile for login; formatted notification content for delivery |
+| **Microsoft Teams, Telegram** | Notification delivery (only if you connect them) | Formatted notification content                                                |
+| **Brandfetch**                | Company and brand enrichment                     | Domain names only (to retrieve publicly available company information)        |
+| **AI model providers**        | Company profile and industry classification      | Domain names and public company information only; never email addresses       |
+| **Hunter.io**                 | Person enrichment (only with your own API key)   | Customer email addresses                                                      |
+| **Sentry**                    | Error monitoring and diagnostics                 | Error logs, request context, and IP addresses                                 |
+| **Infrastructure providers**  | Hosting and data storage                         | All service data (processed within secure data centres)                       |
 
 We may use additional services in these categories as our service evolves. All third-party services
 are selected based on their security practices and compliance with applicable data protection laws.
@@ -117,10 +125,10 @@ are selected based on their security practices and compliance with applicable da
 
 ### Where We Store Data
 
-- **Database**: Persistent storage of accounts, workspaces, integration settings, and processed
-  event records
+- **Database**: Storage of accounts, workspaces, and integration settings; short-lived transaction
+  records used for sales statistics; and aggregated weekly and monthly summaries
 - **Cache**: Temporary storage (with time-to-live expiration) for rate limiting, recent activity
-  tracking, and enrichment data
+  tracking, and enrichment data. We do not keep copies of the raw webhooks we receive
 - **Credentials**: OAuth tokens and webhook secrets are stored securely in our database
 - **Passkey data**: Only public keys and credential identifiers are stored; private keys never leave
   your device
@@ -134,6 +142,8 @@ We implement appropriate technical and organisational measures to protect your d
 - **Webhook signature validation**: All incoming webhooks are validated using HMAC/SHA-256
   signatures
 - **OAuth security**: State parameters for CSRF protection on all OAuth flows
+- **Encryption at rest**: Integration credentials and the customer details we store, in the database
+  and in the cache, are encrypted with ChaCha20-Poly1305
 - **Multi-tenant isolation**: Strict separation ensures workspaces cannot access each other's data
 - **Secure credential storage**: WebAuthn credentials are stored as public keys only; private keys
   remain on your devices
@@ -142,16 +152,20 @@ We implement appropriate technical and organisational measures to protect your d
 
 We retain data for the following periods:
 
-| Data Type                     | Retention Period                                                                    |
-| ----------------------------- | ----------------------------------------------------------------------------------- |
-| Invitation tokens             | 7 days (then automatically deleted)                                                 |
-| Authentication challenges     | 1 hour (then automatically deleted)                                                 |
-| Cached enrichment data        | Retained indefinitely (refreshed periodically)                                      |
-| Event and transaction records | Retained until deleted by you or upon workspace deletion                            |
-| Account data                  | Retained until account deletion; workspace deletion cascades to all associated data |
+| Data Type                    | Retention Period                                                                    |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| Invitation tokens            | 7 days (then automatically deleted)                                                 |
+| Authentication challenges    | 1 hour (then automatically deleted)                                                 |
+| Cached enrichment data       | Retained indefinitely (refreshed periodically)                                      |
+| Recent activity records      | 7 days (then automatically deleted)                                                 |
+| Sales transaction records    | 35 days (then automatically deleted)                                                |
+| Weekly and monthly summaries | 13 months; aggregated totals only, with no customer names or email addresses        |
+| Enriched person data         | Retained until workspace deletion or an erasure request                             |
+| Account data                 | Retained until account deletion; workspace deletion cascades to all associated data |
 
 You can request deletion of your data at any time by contacting us or deleting your workspace
-through the application.
+through the application. For Shopify stores, customer data requests and erasure requests sent by
+Shopify are handled automatically.
 
 ## International Data Transfers
 
